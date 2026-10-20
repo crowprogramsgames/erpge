@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://rrr7imcjaevx"]
+
+[ext_resource type="Script" uid="uid://cu53nclnbgljn" path="res://scenes/characters/action_menu/action_menu.gd" id="1_1cp8h"]
+[ext_resource type="StyleBox" uid="uid://cfaj0v26jvhgr" path="res://scenes/characters/action_menu/combat_button/style_base.tres" id="2_o4od6"]
+[ext_resource type="StyleBox" uid="uid://cqngo0hpvmk4u" path="res://scenes/characters/action_menu/combat_button/style_pressed.tres" id="3_jgrbj"]
+[ext_resource type="StyleBox" uid="uid://7vjyslql3cf7" path="res://scenes/characters/action_menu/combat_button/style_hover.tres" id="4_qhril"]
+[ext_resource type="StyleBox" uid="uid://davkgby1hg4be" path="res://scenes/characters/action_menu/combat_button/style_disabled.tres" id="5_diu1i"]
+[ext_resource type="StyleBox" uid="uid://bbnlx8d162pli" path="res://scenes/characters/action_menu/combat_button/style_focus.tres" id="6_5v72l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cp8h"]
+bg_color = Color(0.9882353, 0.1764706, 0.1882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.99215686, 0.5921569, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbe4s"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgovb"]
+bg_color = Color(0.98039216, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8156863, 0, 0, 1)
+
+[node name="ActionMenu" type="CanvasLayer" unique_id=198874320]
+script = ExtResource("1_1cp8h")
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1229880137]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer" unique_id=1739238510]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttackButton" type="Button" parent="BoxContainer/HBoxContainer" unique_id=253400570]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9607843, 0.43529412, 0.09411765, 1)
+theme_override_styles/normal = ExtResource("2_o4od6")
+theme_override_styles/pressed = ExtResource("3_jgrbj")
+theme_override_styles/hover = ExtResource("4_qhril")
+theme_override_styles/disabled = ExtResource("5_diu1i")
+theme_override_styles/focus = ExtResource("6_5v72l")
+text = "ATTACK"
+
+[node name="ActiveButton" type="Button" parent="BoxContainer/HBoxContainer" unique_id=1780937030]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9607843, 0.43529412, 0.09411765, 1)
+theme_override_styles/normal = ExtResource("2_o4od6")
+theme_override_styles/pressed = ExtResource("3_jgrbj")
+theme_override_styles/hover = ExtResource("4_qhril")
+theme_override_styles/disabled = ExtResource("5_diu1i")
+theme_override_styles/focus = ExtResource("6_5v72l")
+text = "ACTIVE ABILITY"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/HBoxContainer" unique_id=2024574705]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProtectButton" type="Button" parent="BoxContainer/HBoxContainer/VBoxContainer" unique_id=820329539]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9607843, 0.43529412, 0.09411765, 1)
+theme_override_styles/normal = ExtResource("2_o4od6")
+theme_override_styles/pressed = ExtResource("3_jgrbj")
+theme_override_styles/hover = ExtResource("4_qhril")
+theme_override_styles/disabled = ExtResource("5_diu1i")
+theme_override_styles/focus = ExtResource("6_5v72l")
+text = "PROTECT
+"
+
+[node name="SkipButton" type="Button" parent="BoxContainer/HBoxContainer/VBoxContainer" unique_id=751732375]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9607843, 0.43529412, 0.09411765, 1)
+theme_override_styles/normal = ExtResource("2_o4od6")
+theme_override_styles/pressed = ExtResource("3_jgrbj")
+theme_override_styles/hover = ExtResource("4_qhril")
+theme_override_styles/disabled = ExtResource("5_diu1i")
+theme_override_styles/focus = ExtResource("6_5v72l")
+text = "SKIP
+"
+
+[node name="CancelButton" type="Button" parent="." unique_id=42944298]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1cp8h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gbe4s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bgovb")
+text = "CANCEL"
+
+[connection signal="pressed" from="BoxContainer/HBoxContainer/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer/VBoxContainer/ProtectButton" to="." method="_on_protect_button_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer/VBoxContainer/SkipButton" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_cancel_button_pressed"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://ci6ntmgxfjjhq"]
+
+[ext_resource type="Script" uid="uid://dpk7oq4rhsfax" path="res://resources/status.gd" id="1_a3cv2"]
+
+[resource]
+script = ExtResource("1_a3cv2")
+status_name = "Weakened"
+status_desc = "This creature´s power was lowered"
+t_pow = -5
+duration = 3
+metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

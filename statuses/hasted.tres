@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://davpoasx8ri4n"]
+
+[ext_resource type="Script" uid="uid://dpk7oq4rhsfax" path="res://resources/status.gd" id="1_ubul4"]
+
+[resource]
+script = ExtResource("1_ubul4")
+status_name = "Hasted"
+status_desc = "This creature´s reflexes were risen"
+t_ref = 5
+duration = 3
+metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

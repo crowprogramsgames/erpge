@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://ubnfnsut5scf"]
+
+[ext_resource type="Script" uid="uid://dpk7oq4rhsfax" path="res://resources/status.gd" id="1_7p861"]
+
+[resource]
+script = ExtResource("1_7p861")
+status_name = "Focused"
+status_desc = "This creature´s finesse was risen"
+t_fin = 5
+duration = 3
+metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

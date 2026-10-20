@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://coil7okymu6l6"]
+
+[ext_resource type="Script" uid="uid://dpk7oq4rhsfax" path="res://resources/status.gd" id="1_p4gtt"]
+
+[resource]
+script = ExtResource("1_p4gtt")
+status_name = "Blinded"
+status_desc = "This creature´s finesse was lowered"
+t_fin = -5
+duration = 3
+metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

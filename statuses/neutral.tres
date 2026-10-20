@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://bikue0lgh7foy"]
+
+[ext_resource type="Script" uid="uid://dpk7oq4rhsfax" path="res://resources/status.gd" id="1_phevr"]
+
+[resource]
+script = ExtResource("1_phevr")
+status_name = "Neutral"
+status_desc = "This creature is in a stable condition. No stats changed"
+expires = false
+duration = -1
+metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

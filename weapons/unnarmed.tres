@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://7jgep15af5f0"]
+
+[ext_resource type="Script" uid="uid://csiqg3bctj7ka" path="res://resources/weapon.gd" id="1_2cews"]
+
+[resource]
+script = ExtResource("1_2cews")
+weapon_name = &"unnarmed"
+weapon_desc = "The user has no weapon"
+metadata/_custom_type_script = "uid://csiqg3bctj7ka"

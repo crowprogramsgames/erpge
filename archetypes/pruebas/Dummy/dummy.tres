@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://cjfhexjwxprdv"]
+
+[ext_resource type="Resource" uid="uid://058o7rkw1gt2" path="res://archetypes/pruebas/Dummy/a_dummy.tres" id="1_3kxlp"]
+[ext_resource type="Resource" uid="uid://b2yna28ipnoga" path="res://archetypes/pruebas/Dummy/p_dummy.tres" id="2_er2gb"]
+[ext_resource type="Texture2D" uid="uid://c0wir1vojm65h" path="res://art/adv_sprites/dum_files.png" id="3_egtdl"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="4_5nkdd"]
+[ext_resource type="Resource" uid="uid://ubnfnsut5scf" path="res://statuses/focused.tres" id="5_3kxlp"]
+
+[resource]
+script = ExtResource("4_5nkdd")
+arch_name = "Dummy"
+arch_desc = "Grants \"focused\" status to an ally"
+portrait = ExtResource("3_egtdl")
+base_hp = 10
+starting_status = ExtResource("5_3kxlp")
+passive_ability = ExtResource("2_er2gb")
+active_ability = ExtResource("1_3kxlp")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://058o7rkw1gt2"]
+
+[ext_resource type="Script" uid="uid://chl73vh8d44ux" path="res://archetypes/pruebas/Dummy/a_dummy.gd" id="1_rln40"]
+
+[resource]
+script = ExtResource("1_rln40")
+active_name = "Stay focused"
+active_desc = "Grants [color=\"ffdf00\"]Focused[/color] status to [color=\"00ff44\"]target[/color] creature"
+metadata/_custom_type_script = "uid://b7d6rex4qpujm"

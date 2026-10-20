@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://bodm2l08c8c8i"]
+
+[ext_resource type="Script" uid="uid://dxmrj33k40akw" path="res://scenes/battle/battle.gd" id="1_hyhfg"]
+[ext_resource type="PackedScene" uid="uid://rrr7imcjaevx" path="res://scenes/battle/action_menu/action_menu.tscn" id="2_vbxsb"]
+[ext_resource type="PackedScene" uid="uid://bw41icrjlvr7" path="res://scenes/characters/character.tscn" id="3_jkydm"]
+[ext_resource type="Resource" uid="uid://cjfhexjwxprdv" path="res://archetypes/pruebas/Dummy/dummy.tres" id="4_0yh6x"]
+[ext_resource type="Resource" uid="uid://ctlpm2r8l0cf8" path="res://archetypes/pruebas/Angry/angry.tres" id="4_w40i5"]
+[ext_resource type="Script" uid="uid://ci8w5hkagokcq" path="res://statuses/status_manager.gd" id="5_mvulk"]
+[ext_resource type="Script" uid="uid://dpk7oq4rhsfax" path="res://resources/status.gd" id="6_w40i5"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="7_fe4ja"]
+[ext_resource type="Resource" uid="uid://c66hehd7v8q5x" path="res://statuses/dead.tres" id="8_sgdsx"]
+[ext_resource type="Resource" uid="uid://buitq68mel73h" path="res://statuses/enraged.tres" id="9_5moxy"]
+[ext_resource type="Resource" uid="uid://ci6ntmgxfjjhq" path="res://statuses/weakened.tres" id="10_156m4"]
+[ext_resource type="Resource" uid="uid://daht1phkxedd8" path="res://statuses/protected.tres" id="11_pyfix"]
+[ext_resource type="Resource" uid="uid://ckoykpq4hwa6i" path="res://statuses/fragile.tres" id="12_8eh2s"]
+[ext_resource type="Resource" uid="uid://ubnfnsut5scf" path="res://statuses/focused.tres" id="13_e48mi"]
+[ext_resource type="Resource" uid="uid://coil7okymu6l6" path="res://statuses/blinded.tres" id="14_ueicy"]
+[ext_resource type="Resource" uid="uid://davpoasx8ri4n" path="res://statuses/hasted.tres" id="15_n5ix6"]
+[ext_resource type="Resource" uid="uid://bbnne7y2k644o" path="res://statuses/frozen.tres" id="16_tnndc"]
+[ext_resource type="Resource" uid="uid://4p6vwam5gdfs" path="res://statuses/blessed.tres" id="17_k6ux7"]
+[ext_resource type="Resource" uid="uid://csnswftif3f0a" path="res://statuses/cursed.tres" id="18_1oulw"]
+
+[node name="Battle" type="Node2D" unique_id=1538658190 node_paths=PackedStringArray("curr_character")]
+script = ExtResource("1_hyhfg")
+curr_character = NodePath("BlueHandler/Character")
+metadata/_edit_horizontal_guides_ = [88.0, 569.0, 323.0, 281.0, 363.0]
+metadata/_edit_vertical_guides_ = [152.0, 355.0, 998.0, 791.0, 573.0]
+
+[node name="Background" type="ColorRect" parent="." unique_id=1376968691]
+light_mask = 0
+offset_left = -1.0
+offset_right = 1151.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.605274, 0.605274, 0.605274, 1)
+
+[node name="BlueHandler" type="Node2D" parent="." unique_id=1051458434]
+
+[node name="Character" parent="BlueHandler" unique_id=1370791865 groups=["blue_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(132, 156)
+archetype = ExtResource("4_0yh6x")
+char_name = "Paco"
+
+[node name="Character2" parent="BlueHandler" unique_id=2133214311 groups=["blue_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(271, 307)
+archetype = ExtResource("4_0yh6x")
+char_name = "Pedro"
+
+[node name="Character3" parent="BlueHandler" unique_id=1590214184 groups=["blue_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(130, 470)
+archetype = ExtResource("4_0yh6x")
+char_name = "Pim"
+
+[node name="RedHandler" type="Node2D" parent="." unique_id=96916074]
+
+[node name="Character" parent="RedHandler" unique_id=726112052 groups=["red_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(986, 161)
+archetype = ExtResource("4_w40i5")
+char_name = "Antonio"
+
+[node name="Character2" parent="RedHandler" unique_id=1893845541 groups=["red_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(857, 316)
+archetype = ExtResource("4_w40i5")
+char_name = "Annais"
+
+[node name="Character3" parent="RedHandler" unique_id=1554084172 groups=["red_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(984, 473)
+archetype = ExtResource("4_w40i5")
+char_name = "Alicia"
+
+[node name="InfoLayer" type="CanvasLayer" parent="." unique_id=914472660]
+
+[node name="Info" type="Control" parent="InfoLayer" unique_id=341434763]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 403.0
+offset_top = 22.0
+offset_right = 737.0
+offset_bottom = 445.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="InfoLayer/Info" unique_id=1571742912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27058825, 0.27058825, 0.27058825, 0.6901961)
+
+[node name="Label" type="Label" parent="InfoLayer/Info" unique_id=764205930]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 21.0
+offset_right = 276.0
+offset_bottom = 107.0
+text = "Hello, this is info about the character"
+autowrap_mode = 2
+
+[node name="ActionMenu" parent="." unique_id=198874320 instance=ExtResource("2_vbxsb")]
+visible = false
+
+[node name="StatusManager" type="CanvasLayer" parent="." unique_id=830645273]
+unique_name_in_owner = true
+script = ExtResource("5_mvulk")
+status_list = Array[ExtResource("6_w40i5")]([ExtResource("7_fe4ja"), ExtResource("8_sgdsx"), ExtResource("9_5moxy"), ExtResource("10_156m4"), ExtResource("11_pyfix"), ExtResource("12_8eh2s"), ExtResource("13_e48mi"), ExtResource("14_ueicy"), ExtResource("15_n5ix6"), ExtResource("16_tnndc"), ExtResource("17_k6ux7"), ExtResource("18_1oulw")])
