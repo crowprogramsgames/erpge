@@ -1,14 +1,10 @@
 extends Node
 
 var rng = RandomNumberGenerator.new()
-#@export var status_list = Array[Status]
+
 #UTIL
 func roll20():
 	return rng.randi()%20+1
-
-#STATUSES
-
-
 
 #ATTACK
 func attack(origin : Character, target : Character) -> void:
@@ -44,6 +40,7 @@ func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 			pre_bonus = max(0, diff - 15)
 	
 	return [hit_mult, pre_bonus]
+
 func damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
 	var WD = 4
 	var dmg : int = floor(WD * (1 

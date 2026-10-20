@@ -51,12 +51,10 @@ func _set_character() -> void:
 	
 func set_team(color) -> void:
 	
-	if color == "red":
+	if is_in_group("red_team"):
 		platform.texture = RED_PLATFORM
-	elif color == "blue":
-		platform.texture = BLUE_PLATFORM
 	else:
-		platform.texture = RED_PLATFORM
+		platform.texture = BLUE_PLATFORM
 
 func _set_archetype(value: Archetype) -> void:
 	archetype = value
