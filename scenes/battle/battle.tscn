@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://bodm2l08c8c8i"]
 
 [ext_resource type="Script" uid="uid://dxmrj33k40akw" path="res://scenes/battle/battle.gd" id="1_hyhfg"]
-[ext_resource type="PackedScene" uid="uid://rrr7imcjaevx" path="res://scenes/characters/action_menu/action_menu.tscn" id="2_vbxsb"]
 [ext_resource type="PackedScene" uid="uid://bw41icrjlvr7" path="res://scenes/characters/character.tscn" id="3_jkydm"]
 [ext_resource type="Resource" uid="uid://cjfhexjwxprdv" path="res://archetypes/pruebas/Dummy/dummy.tres" id="4_0yh6x"]
 [ext_resource type="Resource" uid="uid://ctlpm2r8l0cf8" path="res://archetypes/pruebas/Angry/angry.tres" id="4_w40i5"]
 [ext_resource type="Script" uid="uid://chyypd4kosl8q" path="res://scenes/battle/action.gd" id="20_fe4ja"]
 
-[node name="Battle" type="Node2D" unique_id=1538658190 node_paths=PackedStringArray("curr_character")]
+[node name="Battle" type="Node2D" unique_id=1538658190]
 script = ExtResource("1_hyhfg")
-curr_character = NodePath("BlueHandler/Character")
 metadata/_edit_horizontal_guides_ = [88.0, 569.0, 323.0, 281.0, 363.0]
 metadata/_edit_vertical_guides_ = [152.0, 355.0, 998.0, 791.0, 573.0]
 
@@ -90,9 +88,6 @@ offset_right = 276.0
 offset_bottom = 107.0
 text = "Hello, this is info about the character"
 autowrap_mode = 2
-
-[node name="ActionMenu" parent="." unique_id=198874320 instance=ExtResource("2_vbxsb")]
-visible = false
 
 [node name="Action" type="Node" parent="." unique_id=2090941461]
 unique_name_in_owner = true

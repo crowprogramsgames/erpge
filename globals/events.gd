@@ -14,5 +14,4 @@ signal close_info
 
 #EFFECTS & STATUSES
 signal delete_effect
-signal grant_status(status_n : StringName, target : Character)
 signal check_bodies
