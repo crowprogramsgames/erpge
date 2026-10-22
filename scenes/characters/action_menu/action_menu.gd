@@ -17,9 +17,16 @@ func _on_protect_button_pressed() -> void:
 
 	get_parent().archetype.protect_action(get_parent())
 
+func _on_active_button_pressed() -> void:
+	var arch : Archetype = get_parent().archetype
+	var crystals = get_parent().curr_crystals
+	if crystals >= arch.active_ability.cost:
+		arch.active_ability.a_action(get_parent())
+	else:
+		print("not enough crystals (" + str(crystals) + "/" + str(arch.active_ability.cost) + ")")
 
 func _on_attack_button_pressed() -> void:
-	Action.set_action(Action.ACTION.ATTACK, Action.SELECTABLE.ENEMY, Action.RESTRICTION.ALIVE)
+	#Action.set_action(Action.ACTION.ATTACK, Action.SELECTABLE.ENEMY, Action.RESTRICTION.ALIVE)
 	get_parent().archetype.attack_action(get_parent())
 
 

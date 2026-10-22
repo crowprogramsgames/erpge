@@ -35,6 +35,8 @@ var effect_list = "empty" #class effect
 @export var passive_ability : Passive
 @export var active_ability : Active
 
+@export_group("Starting Items")
+@export var weapon : Weapon
 
 #TURN
 func character_turn(char : Character):
@@ -75,8 +77,8 @@ func targeted_action(origin : Character, target : Character):
 	match Action.action:
 		Action.ACTION.ATTACK:
 			GL.attack(origin, target)
-		_:
-			pass
+		Action.ACTION.ABILITY:
+			active_ability.a_ability(origin, target)
 
 #UTILITY
 func add_crystals(q : int, char : Character) -> int:

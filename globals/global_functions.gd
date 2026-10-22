@@ -42,7 +42,7 @@ func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 	return [hit_mult, pre_bonus]
 
 func damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
-	var WD = 4
+	var WD : int = o.weapon.weapon_dmg
 	var dmg : int = floor(WD * (1 
 	+ o.tot_pow() * o.archetype.pow_range 
 	+ pre_b * o.archetype.pre_range

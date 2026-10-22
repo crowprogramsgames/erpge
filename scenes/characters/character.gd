@@ -8,7 +8,8 @@ extends Node2D
 @onready var sprite : Sprite2D = $CharSprite
 @onready var turn_platform : Sprite2D = $TurnPlatform
 @onready var health_ui : Label = %Health
-@onready var status_ui : Label = %Status as Label
+@onready var status_ui : Label = %Status
+
 const BLUE_PLATFORM = preload("res://art/adv_sprites/blue_platfomr.png")
 const RED_PLATFORM = preload("res://art/adv_sprites/red_platform.png")
 
@@ -17,15 +18,18 @@ const RED_PLATFORM = preload("res://art/adv_sprites/red_platform.png")
 @export var archetype : Archetype :set = _set_archetype
 
 var curr_crystals : int
+var effect_list : Array[Effect]
 var status : Status
 
 var max_hp : int
-var hp
+var hp : int
 var pow : int
 var end : int
 var fin : int
 var ref : int
 var vir : int
+
+var weapon : Weapon
 
 var initiative : int = 0
 
@@ -46,6 +50,8 @@ func _set_character() -> void:
 	fin = archetype.base_fin
 	ref = archetype.base_ref
 	vir = archetype.base_vir
+	
+	weapon = archetype.weapon
 	
 	update_stats()
 	
@@ -94,15 +100,15 @@ func character_turn():
 	#end of turn
 #STATS
 func tot_pow():
-	return pow
+	return pow + status.t_pow
 func tot_end():
-	return end
+	return end + status.t_end
 func tot_fin():
-	return fin
+	return fin + status.t_fin
 func tot_ref():
-	return ref
+	return ref + status.t_ref
 func tot_vir():
-	return vir
+	return vir + status.t_vir
 
 func check_status(status : StringName):
 	return status.capitalize() == self.status.status_name.capitalize()

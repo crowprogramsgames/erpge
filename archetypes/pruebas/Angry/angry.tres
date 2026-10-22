@@ -1,14 +1,20 @@
 [gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://ctlpm2r8l0cf8"]
 
 [ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_fgbgo"]
+[ext_resource type="Resource" uid="uid://bgd37bmva8vj7" path="res://archetypes/pruebas/Angry/a_angry.tres" id="1_mtwf2"]
 [ext_resource type="Texture2D" uid="uid://cnule6p8qxdrr" path="res://art/adv_sprites/ang_files.png" id="1_r6bii"]
+[ext_resource type="Resource" uid="uid://c1ethuiqgq5mw" path="res://archetypes/pruebas/Angry/p_angry.tres" id="2_1yca4"]
 [ext_resource type="Resource" uid="uid://buitq68mel73h" path="res://statuses/enraged.tres" id="3_gce5j"]
+[ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="4_gce5j"]
 
 [resource]
 script = ExtResource("1_fgbgo")
 arch_name = "Angry"
 arch_desc = "Grants \"enraged\" status to an ally"
 portrait = ExtResource("1_r6bii")
-base_hp = 10
+base_hp = 50
 starting_status = ExtResource("3_gce5j")
+passive_ability = ExtResource("2_1yca4")
+active_ability = ExtResource("1_mtwf2")
+weapon = ExtResource("4_gce5j")
 metadata/_custom_type_script = "uid://qoe7jgamtuc7"

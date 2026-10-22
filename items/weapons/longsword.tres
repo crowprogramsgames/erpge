@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://dy4imxdahwk4w"]
+
+[ext_resource type="Script" uid="uid://csiqg3bctj7ka" path="res://resources/weapon.gd" id="1_ikesb"]
+
+[resource]
+script = ExtResource("1_ikesb")
+weapon_name = &"Longsword"
+weapon_desc = "Pointy and sharp metal stick"
+weapon_dmg = 10
+metadata/_custom_type_script = "uid://csiqg3bctj7ka"
