@@ -7,7 +7,7 @@ func add_effect(e : Effect):
 	effect_list.append(e)
 
 func delete_effect(e : Effect):
-	e.queue_free()
+	effect_list.erase(e)
 
 func t_pow() -> int:
 	var temp : int = 0

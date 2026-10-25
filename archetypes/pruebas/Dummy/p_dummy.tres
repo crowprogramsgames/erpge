@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Passive" format=3 uid="uid://b2yna28ipnoga"]
+[gd_resource type="Resource" format=3 uid="uid://b2yna28ipnoga"]
 
-[ext_resource type="Script" uid="uid://dmlaesjve55vy" path="res://resources/passive.gd" id="1_4c6sr"]
+[ext_resource type="Script" uid="uid://b8e3dyg61udcy" path="res://archetypes/pruebas/Dummy/p_dummy.gd" id="1_hn877"]
 
 [resource]
-script = ExtResource("1_4c6sr")
+script = ExtResource("1_hn877")
 passive_name = "Consinstency"
 passive_desc = "Get 3 [color=\"005a99\"]temporary finesse[/color] after hitting an attack"
 metadata/_custom_type_script = "uid://dmlaesjve55vy"

@@ -95,6 +95,12 @@ func effect_countdown(q : int, char : Character):
 	var d = char.status.change_duration(-q)
 	if(d <= 0):
 		char.status_manager.grant_status("neutral", char)
+	
+	var ed : int
+	for ef in char.effect_manager.effect_list:
+		ed = ef.change_duration(-q)
+		if(ed <= 0):
+			char.effect_manager.delete_effect(ef)
 
 func add_initiative(char : Character) -> void:
 	char.initiative += 30 - char.tot_ref()

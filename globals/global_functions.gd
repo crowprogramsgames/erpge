@@ -27,19 +27,20 @@ func attack(origin : Character, target : Character) -> void:
 func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 	var hit_mult : float = 0
 	var pre_bonus : int = 0
+	print(origin.tot_fin())
+	var attack_roll = roll + origin.tot_fin()
+	var dodge = 5 + target.tot_ref()
+	var diff = attack_roll - dodge
+	pre_bonus = max(0, diff - 15)
+	
 	if roll <= max(1, -origin.tot_vir()):
 		hit_mult = -1
 	elif roll >= min(20, 20 - origin.tot_vir()):
-		hit_mult = origin.archetype.crit_mult + origin.tot_vir() * origin.archetype.crit_range
-	else:
-		var attack_roll = roll + origin.tot_fin()
-		var dodge = 5 + target.tot_ref()
-		var diff = attack_roll - dodge
-		if(diff < 0):
-			hit_mult = -1
-		else:
-			hit_mult = 0
-			pre_bonus = max(0, diff - 15)
+		hit_mult += origin.archetype.crit_mult + origin.tot_vir() * origin.archetype.crit_range
+	elif(diff < 0):
+		hit_mult = -1
+	
+			
 	
 	return [hit_mult, pre_bonus]
 
