@@ -19,6 +19,8 @@ func attack(origin : Character, target : Character) -> void:
 		var dmg : int = damage(pre_bonus, hit_mult, origin, target)
 		print(origin.char_name + " has dealt " + str(dmg) + " damage to " + target.char_name)
 		target.archetype.be_dealt_dmg(target, dmg)
+		if(dmg > 0):
+			Events.attack_hit.emit(origin, target)
 	
 	origin.archetype.end_of_turn(origin)
 	

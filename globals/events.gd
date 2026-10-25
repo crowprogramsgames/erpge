@@ -15,3 +15,6 @@ signal close_info
 #EFFECTS & STATUSES
 signal delete_effect
 signal check_bodies
+
+#TRIGGERS
+signal attack_hit(o: Character, t:Character)

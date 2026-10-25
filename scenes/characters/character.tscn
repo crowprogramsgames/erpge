@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="20_38ol5"]
 [ext_resource type="Resource" uid="uid://daht1phkxedd8" path="res://statuses/protected.tres" id="21_kxerg"]
 [ext_resource type="Resource" uid="uid://ci6ntmgxfjjhq" path="res://statuses/weakened.tres" id="22_by7bx"]
+[ext_resource type="Script" uid="uid://bbrhbynn3wco3" path="res://scenes/characters/effect_manager.gd" id="23_c05sq"]
 
 [sub_resource type="Shader" id="Shader_2qjml"]
 code = "shader_type canvas_item;
@@ -118,6 +119,9 @@ script = ExtResource("8_oqd6d")
 [node name="StatusManager" type="Node" parent="." unique_id=579821028]
 script = ExtResource("9_xlado")
 status_list = Array[ExtResource("10_c05sq")]([ExtResource("11_gao2u"), ExtResource("12_kmd3m"), ExtResource("13_nqhgd"), ExtResource("14_ljthu"), ExtResource("15_5dsrv"), ExtResource("16_kybri"), ExtResource("17_8kfk0"), ExtResource("18_tsuqa"), ExtResource("19_tfsuh"), ExtResource("20_38ol5"), ExtResource("21_kxerg"), ExtResource("22_by7bx")])
+
+[node name="EffectManager" type="Node" parent="." unique_id=92209809]
+script = ExtResource("23_c05sq")
 
 [connection signal="input_event" from="AdvArea" to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="AdvArea" to="." method="_on_mouse_entered"]

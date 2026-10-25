@@ -13,5 +13,5 @@ extends Effect
 
 func change_duration(q : int) -> int:
 	if expires:
-		duration =  duration + q
+		duration += q
 	return duration

@@ -5,10 +5,14 @@ extends Node2D
 @onready var platform : Sprite2D = $Platform
 @onready var action_menu : CanvasLayer = $ActionMenu
 @onready var status_manager : StatusManager = $StatusManager
+@onready var effect_manager : EffectManager = $EffectManager
 @onready var sprite : Sprite2D = $CharSprite
 @onready var turn_platform : Sprite2D = $TurnPlatform
 @onready var health_ui : Label = %Health
 @onready var status_ui : Label = %Status
+
+var passive : Passive
+var active : Active
 
 const BLUE_PLATFORM = preload("res://art/adv_sprites/blue_platfomr.png")
 const RED_PLATFORM = preload("res://art/adv_sprites/red_platform.png")
@@ -41,7 +45,7 @@ func _set_character() -> void:
 		await ready
 	sprite.texture = archetype.portrait
 	curr_crystals = archetype.starting_crystals
-	status = archetype.starting_status
+	status = archetype.starting_status.duplicate()
 	
 	max_hp = archetype.base_hp
 	hp = max_hp
@@ -52,6 +56,10 @@ func _set_character() -> void:
 	vir = archetype.base_vir
 	
 	weapon = archetype.weapon
+	active = archetype.active_ability
+	
+	
+	_set_passive()
 	
 	update_stats()
 	
@@ -65,7 +73,7 @@ func set_team(color) -> void:
 func _set_archetype(value: Archetype) -> void:
 	archetype = value
 	_set_character()
-	
+	_set_passive()
 func set_starting_initiative() -> void:
 	initiative = GL.roll20() - tot_ref()
 	
@@ -73,7 +81,8 @@ func set_crystals(q : int) -> void:
 	curr_crystals = q
 func set_status(status : Status) -> void:
 	self.status = status
-
+func grant_effect(tpow : int, tend : int, tfin : int, tref : int, tvir : int, dur : int):
+	effect_manager.add_effect(Effect.new_effect(tpow,tend,tfin,tref,tvir,dur))
 func _on_mouse_entered() -> void:
 	arrow.show()
 	Events.call_info.emit(self)
@@ -100,18 +109,23 @@ func character_turn():
 	#end of turn
 #STATS
 func tot_pow():
-	return pow + status.t_pow
+	return pow + status.t_pow + effect_manager.t_pow()
 func tot_end():
-	return end + status.t_end
+	return end + status.t_end + effect_manager.t_end()
 func tot_fin():
-	return fin + status.t_fin
+	return fin + status.t_fin + effect_manager.t_fin()
 func tot_ref():
-	return ref + status.t_ref
+	return ref + status.t_ref + effect_manager.t_ref()
 func tot_vir():
-	return vir + status.t_vir
+	return vir + status.t_vir + effect_manager.t_vir()
 
 func check_status(status : StringName):
 	return status.capitalize() == self.status.status_name.capitalize()
 
 func _kill_char() -> void:
 	status_manager.grant_status("dead", self)
+
+#PASSIVE
+func _set_passive():
+	passive = archetype.passive_ability.duplicate()
+	passive.set_passive(self)

@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_3dhi5")
+active_name = "Get Angrier"
+active_desc = "Grants [color=\"ffdf00\"]Enraged[/color] status to [color=\"00ff44\"]target[/color] creature"
 metadata/_custom_type_script = "uid://b7d6rex4qpujm"
