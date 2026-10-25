@@ -35,6 +35,8 @@ var effect_list = "empty" #class effect
 @export var passive_ability : Passive
 @export var active_ability : Active
 
+@export_group("Starting Items")
+@export var weapon : Weapon
 
 #TURN
 func character_turn(char : Character):
@@ -75,8 +77,8 @@ func targeted_action(origin : Character, target : Character):
 	match Action.action:
 		Action.ACTION.ATTACK:
 			GL.attack(origin, target)
-		_:
-			pass
+		Action.ACTION.ABILITY:
+			active_ability.a_ability(origin, target)
 
 #UTILITY
 func add_crystals(q : int, char : Character) -> int:
@@ -93,6 +95,12 @@ func effect_countdown(q : int, char : Character):
 	var d = char.status.change_duration(-q)
 	if(d <= 0):
 		char.status_manager.grant_status("neutral", char)
+	
+	var ed : int
+	for ef in char.effect_manager.effect_list:
+		ed = ef.change_duration(-q)
+		if(ed <= 0):
+			char.effect_manager.delete_effect(ef)
 
 func add_initiative(char : Character) -> void:
 	char.initiative += 30 - char.tot_ref()

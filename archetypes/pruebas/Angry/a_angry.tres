@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Active" format=3 uid="uid://bgd37bmva8vj7"]
+[gd_resource type="Resource" format=3 uid="uid://bgd37bmva8vj7"]
 
-[ext_resource type="Script" uid="uid://b7d6rex4qpujm" path="res://resources/active.gd" id="1_3dhi5"]
+[ext_resource type="Script" uid="uid://cl7me2fxpk6uo" path="res://archetypes/pruebas/Angry/a_angry.gd" id="1_3dhi5"]
 
 [resource]
 script = ExtResource("1_3dhi5")
+active_name = "Get Angrier"
+active_desc = "Grants [color=\"ffdf00\"]Enraged[/color] status to [color=\"00ff44\"]target[/color] creature"
 metadata/_custom_type_script = "uid://b7d6rex4qpujm"

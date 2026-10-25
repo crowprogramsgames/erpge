@@ -5,14 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://c0wir1vojm65h" path="res://art/adv_sprites/dum_files.png" id="3_egtdl"]
 [ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="4_5nkdd"]
 [ext_resource type="Resource" uid="uid://ubnfnsut5scf" path="res://statuses/focused.tres" id="5_3kxlp"]
+[ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="6_er2gb"]
 
 [resource]
 script = ExtResource("4_5nkdd")
 arch_name = "Dummy"
 arch_desc = "Grants \"focused\" status to an ally"
 portrait = ExtResource("3_egtdl")
-base_hp = 10
+base_hp = 50
 starting_status = ExtResource("5_3kxlp")
 passive_ability = ExtResource("2_er2gb")
 active_ability = ExtResource("1_3kxlp")
+weapon = ExtResource("6_er2gb")
 metadata/_custom_type_script = "uid://qoe7jgamtuc7"

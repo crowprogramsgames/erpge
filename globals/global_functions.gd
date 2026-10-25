@@ -19,30 +19,33 @@ func attack(origin : Character, target : Character) -> void:
 		var dmg : int = damage(pre_bonus, hit_mult, origin, target)
 		print(origin.char_name + " has dealt " + str(dmg) + " damage to " + target.char_name)
 		target.archetype.be_dealt_dmg(target, dmg)
+		if(dmg > 0):
+			Events.attack_hit.emit(origin, target)
 	
 	origin.archetype.end_of_turn(origin)
 	
 func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 	var hit_mult : float = 0
 	var pre_bonus : int = 0
+	print(origin.tot_fin())
+	var attack_roll = roll + origin.tot_fin()
+	var dodge = 5 + target.tot_ref()
+	var diff = attack_roll - dodge
+	pre_bonus = max(0, diff - 15)
+	
 	if roll <= max(1, -origin.tot_vir()):
 		hit_mult = -1
 	elif roll >= min(20, 20 - origin.tot_vir()):
-		hit_mult = origin.archetype.crit_mult + origin.tot_vir() * origin.archetype.crit_range
-	else:
-		var attack_roll = roll + origin.tot_fin()
-		var dodge = 5 + target.tot_ref()
-		var diff = attack_roll - dodge
-		if(diff < 0):
-			hit_mult = -1
-		else:
-			hit_mult = 0
-			pre_bonus = max(0, diff - 15)
+		hit_mult += origin.archetype.crit_mult + origin.tot_vir() * origin.archetype.crit_range
+	elif(diff < 0):
+		hit_mult = -1
+	
+			
 	
 	return [hit_mult, pre_bonus]
 
 func damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
-	var WD = 4
+	var WD : int = o.weapon.weapon_dmg
 	var dmg : int = floor(WD * (1 
 	+ o.tot_pow() * o.archetype.pow_range 
 	+ pre_b * o.archetype.pre_range

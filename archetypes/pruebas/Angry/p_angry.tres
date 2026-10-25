@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Passive" format=3 uid="uid://c1ethuiqgq5mw"]
+[gd_resource type="Resource" format=3 uid="uid://c1ethuiqgq5mw"]
 
-[ext_resource type="Script" uid="uid://dmlaesjve55vy" path="res://resources/passive.gd" id="1_0mvqr"]
+[ext_resource type="Script" uid="uid://dkysmw7icwew" path="res://archetypes/pruebas/Angry/p_angry.gd" id="1_0mvqr"]
 
 [resource]
 script = ExtResource("1_0mvqr")

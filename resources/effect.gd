@@ -11,6 +11,16 @@ extends Resource
 @export var duration : int = 2
 var source : String = ""
 
+static func new_effect(tpow : int , tend : int, tfin : int, tref : int, tvir : int, dur : int) -> Effect:
+	var e : Effect = Effect.new()
+	e.t_pow = tpow
+	e.t_end = tend
+	e.t_fin = tfin
+	e.t_ref = tref
+	e.t_vir = tvir
+	e.duration = dur
+	return e
+
 func set_neg_zero() -> void:
 	if t_pow < 0:
 		_set("t_pow", 0)
@@ -34,8 +44,13 @@ func set_pos_zero() -> void:
 	if t_vir > 0:
 		_set("t_vir", 0)
 func set_source(name : String , ability : String) -> void:
-	_set("source", name + ":" + ability)
+	source = name + ":" + ability
 
 func change_duration(q : int) -> int:
-	_set("duration", duration + q)
+	duration += q
 	return duration
+
+func empty() -> bool:
+	if(t_pow == 0 && t_end == 0 && t_fin == 0 && t_ref == 0 && t_vir == 0):
+		return true
+	return false
