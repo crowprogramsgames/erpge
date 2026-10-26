@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://bpgqfr3eaceys"]
+
+[ext_resource type="Script" uid="uid://b0ho6bjeq8mo7" path="res://archetypes/pruebas/Gloomy/p_gloomy.gd" id="1_r7w8j"]
+
+[resource]
+script = ExtResource("1_r7w8j")
+metadata/_custom_type_script = "uid://dmlaesjve55vy"

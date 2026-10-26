@@ -18,3 +18,6 @@ signal check_bodies
 
 #TRIGGERS
 signal attack_hit(o: Character, t:Character)
+signal start_of_game
+signal attack_missed(o: Character, t:Character)
+signal initiative_given(o: Character)

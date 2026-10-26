@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://tc3mnl3xm86s"]
+
+[ext_resource type="Script" uid="uid://nwtm688xoagq" path="res://archetypes/pruebas/Chilly/a_chilly.gd" id="1_klcle"]
+
+[resource]
+script = ExtResource("1_klcle")
+metadata/_custom_type_script = "uid://b7d6rex4qpujm"

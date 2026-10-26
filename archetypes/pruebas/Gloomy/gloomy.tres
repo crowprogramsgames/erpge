@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://b218xu46fbw7v"]
+
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_8w84j"]
+[ext_resource type="Resource" uid="uid://c84vx1e0aqurk" path="res://archetypes/pruebas/Gloomy/a_gloomy.tres" id="1_mhdjl"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_hevl0"]
+[ext_resource type="Resource" uid="uid://bpgqfr3eaceys" path="res://archetypes/pruebas/Gloomy/p_gloomy.tres" id="2_i4fvr"]
+[ext_resource type="Texture2D" uid="uid://d4muh2u6m6ceq" path="res://art/adv_sprites/glo_files.png" id="3_i4fvr"]
+[ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="5_v03hi"]
+
+[resource]
+script = ExtResource("1_8w84j")
+arch_name = "Gloomy"
+arch_desc = "Groovy"
+portrait = ExtResource("3_i4fvr")
+base_hp = 50
+passive_ability = ExtResource("2_i4fvr")
+active_ability = ExtResource("1_mhdjl")
+weapon = ExtResource("5_v03hi")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

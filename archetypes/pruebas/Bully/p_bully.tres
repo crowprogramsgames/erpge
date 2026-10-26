@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://crhpihyye2d45"]
+
+[ext_resource type="Script" uid="uid://cc3wegrwxcws" path="res://archetypes/pruebas/Bully/p_bully.gd" id="1_ji30i"]
+
+[resource]
+script = ExtResource("1_ji30i")
+metadata/_custom_type_script = "uid://dmlaesjve55vy"

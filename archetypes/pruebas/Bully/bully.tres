@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://djgrhwdidlhjj"]
+
+[ext_resource type="Resource" uid="uid://b32sv65mblvjg" path="res://archetypes/pruebas/Bully/a_bully.tres" id="1_l2ey4"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_ratvh"]
+[ext_resource type="Resource" uid="uid://crhpihyye2d45" path="res://archetypes/pruebas/Bully/p_bully.tres" id="2_4x1da"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_co6u2"]
+[ext_resource type="Texture2D" uid="uid://bfs63rdla7q4v" path="res://art/adv_sprites/def_files.png" id="3_4x1da"]
+[ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="5_l2ey4"]
+
+[resource]
+script = ExtResource("1_ratvh")
+portrait = ExtResource("3_4x1da")
+base_hp = 50
+passive_ability = ExtResource("2_4x1da")
+active_ability = ExtResource("1_l2ey4")
+weapon = ExtResource("5_l2ey4")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

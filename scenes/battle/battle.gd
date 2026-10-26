@@ -16,6 +16,7 @@ func _ready():
 	_set_events()
 	_set_teams()
 	_set_starting_initiative()
+	_start_of_game()
 	_turn()
 
 func _set_events():
@@ -35,6 +36,8 @@ func _set_starting_initiative():
 	for adv in adventurers:
 		adv.set_starting_initiative()
 
+func _start_of_game():
+	Events.start_of_game.emit()
 func _turn():
 	_find_next()
 	curr.turn_platform.show()
@@ -47,8 +50,7 @@ func _find_next() -> void:
 				curr = adv
 			if adv.initiative < curr.initiative:
 				curr = adv
-func _allies_o_enemies(origin : Character, target: Character) -> bool:
-	return origin.is_in_group("blue_team") == target.is_in_group("blue_team")
+
 func _is_selectable(origin : Character, target : Character) -> bool:
 	var selectable : bool = true
 	match Action.selectable:
@@ -57,13 +59,13 @@ func _is_selectable(origin : Character, target : Character) -> bool:
 		Action.SELECTABLE.ALL:
 			selectable = true
 		Action.SELECTABLE.ENEMY:
-			selectable = !_allies_o_enemies(curr, target)
+			selectable = !GL.allies_o_enemies(curr, target)
 		Action.SELECTABLE.ALLY:
-			selectable = _allies_o_enemies(curr, target)
+			selectable = GL.allies_o_enemies(curr, target)
 		Action.SELECTABLE.OTHER:
 			selectable = curr != target
 		Action.SELECTABLE.OALLY:
-			selectable = curr != target && _allies_o_enemies(curr, target)
+			selectable = curr != target && GL.allies_o_enemies(curr, target)
 	
 	if(selectable):
 		match Action.restriction:
@@ -88,7 +90,7 @@ func _on_end_turn():
 	darkBg.hide()
 	curr.turn_platform.hide()
 	curr.action_menu.cancelBtn.hide()
-	curr.archetype.add_initiative(curr)
+	curr.passive.add_initiative(curr)
 	curr.action_menu.hide()
 	_turn()
 func _on_choose_target() -> void:
@@ -97,7 +99,7 @@ func _on_cancel_pressed() -> void:
 	darkBg.hide()
 func _on_target_selected(target : Character) -> void:
 	if _is_selectable(curr, target):
-		curr.archetype.targeted_action(curr, target)
+		curr.passive.targeted_action(curr, target)
 func _on_check_bodies():
 	var redTeam = get_tree().get_nodes_in_group("red_team")
 	var blueTeam = get_tree().get_nodes_in_group("blue_team")

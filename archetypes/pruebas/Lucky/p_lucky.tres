@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://q6l8npoir5uc"]
+
+[ext_resource type="Script" uid="uid://dronyo1e3fwh0" path="res://archetypes/pruebas/Lucky/p_lucky.gd" id="1_yloy4"]
+
+[resource]
+script = ExtResource("1_yloy4")
+metadata/_custom_type_script = "uid://dmlaesjve55vy"

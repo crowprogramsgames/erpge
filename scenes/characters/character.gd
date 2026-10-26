@@ -22,6 +22,7 @@ const RED_PLATFORM = preload("res://art/adv_sprites/red_platform.png")
 @export var archetype : Archetype :set = _set_archetype
 
 var curr_crystals : int
+var max_crystals : int
 var effect_list : Array[Effect]
 var status : Status
 
@@ -45,6 +46,7 @@ func _set_character() -> void:
 		await ready
 	sprite.texture = archetype.portrait
 	curr_crystals = archetype.starting_crystals
+	max_crystals = archetype.max_crystals
 	status = archetype.starting_status.duplicate()
 	
 	max_hp = archetype.base_hp
@@ -75,7 +77,7 @@ func _set_archetype(value: Archetype) -> void:
 	_set_character()
 	_set_passive()
 func set_starting_initiative() -> void:
-	initiative = GL.roll20() - tot_ref()
+	initiative = GL.roll20() - passive.tot_ref(self)
 	
 func set_crystals(q : int) -> void:
 	curr_crystals = q
@@ -102,24 +104,13 @@ func update_stats() -> void:
 	
 #TURN
 func character_turn():
-	self.archetype.character_turn(self)
+	self.passive.character_turn(self)
 	#before action maneuver
 	#action
 	#after action maneuver
 	#end of turn
-#STATS
-func tot_pow():
-	return pow + status.t_pow + effect_manager.t_pow()
-func tot_end():
-	return end + status.t_end + effect_manager.t_end()
-func tot_fin():
-	return fin + status.t_fin + effect_manager.t_fin()
-func tot_ref():
-	return ref + status.t_ref + effect_manager.t_ref()
-func tot_vir():
-	return vir + status.t_vir + effect_manager.t_vir()
 
-func check_status(status : StringName):
+func check_status(status : StringName) -> bool:
 	return status.capitalize() == self.status.status_name.capitalize()
 
 func _kill_char() -> void:
@@ -129,3 +120,7 @@ func _kill_char() -> void:
 func _set_passive():
 	passive = archetype.passive_ability.duplicate()
 	passive.set_passive(self)
+
+#UTIL
+func lose_health(quant : int):
+	hp -= quant

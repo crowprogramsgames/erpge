@@ -8,4 +8,4 @@ func a_action(o : Character) -> void:
 func a_ability(o: Character, t: Character) -> void:
 	t.status_manager.grant_status("focused", t)
 	pay_cost(o)
-	o.archetype.end_of_turn(o)
+	o.passive.end_of_turn(o)

@@ -2,6 +2,8 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
+enum HIT {CRIT_MISS, MISS, HIT, CRIT_HIT}
+
 #UTIL
 func roll20():
 	return rng.randi()%20+1
@@ -18,38 +20,45 @@ func attack(origin : Character, target : Character) -> void:
 	else:
 		var dmg : int = damage(pre_bonus, hit_mult, origin, target)
 		print(origin.char_name + " has dealt " + str(dmg) + " damage to " + target.char_name)
-		target.archetype.be_dealt_dmg(target, dmg)
+		target.passive.be_dealt_dmg(target, dmg)
 		if(dmg > 0):
 			Events.attack_hit.emit(origin, target)
 	
-	origin.archetype.end_of_turn(origin)
+	origin.passive.end_of_turn(origin)
 	
 func hit(roll: int, origin : Character, target : Character) -> Array[float]:
+	var hit_state : HIT = HIT.HIT
 	var hit_mult : float = 0
 	var pre_bonus : int = 0
-	print(origin.tot_fin())
-	var attack_roll = roll + origin.tot_fin()
-	var dodge = 5 + target.tot_ref()
+	var attack_roll = roll + origin.passive.tot_fin(origin)
+	var dodge = 5 + target.passive.tot_ref(target)
 	var diff = attack_roll - dodge
 	pre_bonus = max(0, diff - 15)
 	
-	if roll <= max(1, -origin.tot_vir()):
+	if roll <= max(1, -origin.passive.tot_vir(origin)):
 		hit_mult = -1
-	elif roll >= min(20, 20 - origin.tot_vir()):
-		hit_mult += origin.archetype.crit_mult + origin.tot_vir() * origin.archetype.crit_range
+		hit_state = HIT.CRIT_MISS
+	elif roll >= min(20, 20 - origin.passive.tot_vir(origin)):
+		hit_mult += origin.archetype.crit_mult + origin.passive.tot_vir(origin) * origin.archetype.crit_range
+		hit_state = HIT.CRIT_HIT
 	elif(diff < 0):
+		hit_state = HIT.MISS
 		hit_mult = -1
 	
-			
+	if(hit_state == HIT.MISS || hit_state == HIT.CRIT_MISS):
+		Events.attack_missed.emit(origin, target)
 	
 	return [hit_mult, pre_bonus]
 
 func damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
 	var WD : int = o.weapon.weapon_dmg
 	var dmg : int = floor(WD * (1 
-	+ o.tot_pow() * o.archetype.pow_range 
+	+ o.passive.tot_pow(o) * o.archetype.pow_range 
 	+ pre_b * o.archetype.pre_range
-	- t.tot_end() * t.archetype.end_range)
+	- t.passive.tot_end(t) * t.archetype.end_range)
 	* (1 + hit_mult))
 	
 	return max(1, dmg)
+
+func allies_o_enemies(origin : Character, target: Character) -> bool:
+	return origin.is_in_group("blue_team") == target.is_in_group("blue_team")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://bl5cuo1kjbrkg"]
+
+[ext_resource type="Resource" uid="uid://tc3mnl3xm86s" path="res://archetypes/pruebas/Chilly/a_chilly.tres" id="1_kopb6"]
+[ext_resource type="Resource" uid="uid://bjf6hy46rvtvy" path="res://archetypes/pruebas/Chilly/p_chilly.tres" id="2_lbuff"]
+[ext_resource type="Texture2D" uid="uid://b66nxgwulukxi" path="res://art/adv_sprites/icy_files.png" id="3_lbuff"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="3_qnh61"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="4_38lcv"]
+[ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="5_gla4t"]
+
+[resource]
+script = ExtResource("3_qnh61")
+portrait = ExtResource("3_lbuff")
+base_hp = 50
+passive_ability = ExtResource("2_lbuff")
+active_ability = ExtResource("1_kopb6")
+weapon = ExtResource("5_gla4t")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"
