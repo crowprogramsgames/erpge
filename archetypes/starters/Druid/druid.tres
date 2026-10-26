@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://c380fio7houlm"]
+
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_3xh3j"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_67p0i"]
+[ext_resource type="Resource" uid="uid://7jgep15af5f0" path="res://items/weapons/unnarmed.tres" id="3_kpbgi"]
+
+[resource]
+script = ExtResource("1_3xh3j")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

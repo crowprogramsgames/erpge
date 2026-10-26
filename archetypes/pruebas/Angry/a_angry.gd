@@ -1,6 +1,5 @@
 extends Active
 
-
 func a_action(o : Character) -> void:
 	Action.set_action(Action.ACTION.ABILITY, Action.SELECTABLE.ALL, Action.RESTRICTION.ALIVE)
 	o.action_menu.cancelBtn.show()
