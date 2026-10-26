@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://cjk8lan8oanyp"]
+
+[ext_resource type="Resource" uid="uid://cmdpx8vjv25hy" path="res://archetypes/pruebas/Lucky/a_lucky.tres" id="1_a8qwn"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_jux03"]
+[ext_resource type="Resource" uid="uid://q6l8npoir5uc" path="res://archetypes/pruebas/Lucky/p_lucky.tres" id="2_ang20"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_j0qar"]
+[ext_resource type="Texture2D" uid="uid://c3ln38i5c62el" path="res://art/adv_sprites/luc_files.png" id="3_ang20"]
+[ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="5_65kgs"]
+
+[resource]
+script = ExtResource("1_jux03")
+portrait = ExtResource("3_ang20")
+base_hp = 50
+crit_mult = 2.0
+passive_ability = ExtResource("2_ang20")
+active_ability = ExtResource("1_a8qwn")
+weapon = ExtResource("5_65kgs")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

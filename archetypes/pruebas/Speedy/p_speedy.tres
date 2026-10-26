@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://br4te7xidbsgs"]
+
+[ext_resource type="Script" uid="uid://bgysw8bx8jd8e" path="res://archetypes/pruebas/Speedy/p_speedy.gd" id="1_flsbp"]
+
+[resource]
+script = ExtResource("1_flsbp")
+passive_name = "Start your engines"
+passive_desc = "Start the game with Hasted status"
+metadata/_custom_type_script = "uid://dmlaesjve55vy"

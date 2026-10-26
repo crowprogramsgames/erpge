@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://cglsh7tmwcb0j"]
+
+[ext_resource type="Script" uid="uid://b1w0m6p76qs6n" path="res://archetypes/pruebas/Beefy/a_beefy.gd" id="1_66mn2"]
+
+[resource]
+script = ExtResource("1_66mn2")
+metadata/_custom_type_script = "uid://b7d6rex4qpujm"

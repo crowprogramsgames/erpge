@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dxmrj33k40akw" path="res://scenes/battle/battle.gd" id="1_hyhfg"]
 [ext_resource type="PackedScene" uid="uid://bw41icrjlvr7" path="res://scenes/characters/character.tscn" id="3_jkydm"]
-[ext_resource type="Resource" uid="uid://cjfhexjwxprdv" path="res://archetypes/pruebas/Dummy/dummy.tres" id="4_0yh6x"]
-[ext_resource type="Resource" uid="uid://ctlpm2r8l0cf8" path="res://archetypes/pruebas/Angry/angry.tres" id="4_w40i5"]
+[ext_resource type="Resource" uid="uid://b218xu46fbw7v" path="res://archetypes/pruebas/Gloomy/gloomy.tres" id="3_pll4o"]
+[ext_resource type="Resource" uid="uid://cbggs6pi7waid" path="res://archetypes/pruebas/Speedy/speedy.tres" id="4_fh7rg"]
+[ext_resource type="Resource" uid="uid://cjk8lan8oanyp" path="res://archetypes/pruebas/Lucky/lucky.tres" id="5_agsc7"]
+[ext_resource type="Resource" uid="uid://brmqlw3a4obw7" path="res://archetypes/pruebas/Beefy/beefy.tres" id="6_py4tk"]
+[ext_resource type="Resource" uid="uid://djgrhwdidlhjj" path="res://archetypes/pruebas/Bully/bully.tres" id="7_agsc7"]
+[ext_resource type="Resource" uid="uid://bl5cuo1kjbrkg" path="res://archetypes/pruebas/Chilly/chilly.tres" id="8_agsc7"]
 [ext_resource type="Script" uid="uid://chyypd4kosl8q" path="res://scenes/battle/action.gd" id="20_fe4ja"]
 
 [node name="Battle" type="Node2D" unique_id=1538658190]
@@ -30,34 +34,34 @@ color = Color(0.105882354, 0.105882354, 0.105882354, 0.69411767)
 [node name="Character" parent="BlueHandler" unique_id=1370791865 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(132, 156)
 char_name = &"Paco"
-archetype = ExtResource("4_0yh6x")
+archetype = ExtResource("3_pll4o")
 
 [node name="Character2" parent="BlueHandler" unique_id=2133214311 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(271, 307)
 char_name = &"Pedro"
-archetype = ExtResource("4_0yh6x")
+archetype = ExtResource("4_fh7rg")
 
 [node name="Character3" parent="BlueHandler" unique_id=1590214184 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(130, 470)
 char_name = &"Paula"
-archetype = ExtResource("4_0yh6x")
+archetype = ExtResource("5_agsc7")
 
 [node name="RedHandler" type="Node2D" parent="." unique_id=96916074]
 
 [node name="Character" parent="RedHandler" unique_id=726112052 groups=["red_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(986, 161)
 char_name = &"Annais"
-archetype = ExtResource("4_w40i5")
+archetype = ExtResource("6_py4tk")
 
 [node name="Character2" parent="RedHandler" unique_id=1893845541 groups=["red_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(857, 316)
 char_name = &"Antonio"
-archetype = ExtResource("4_w40i5")
+archetype = ExtResource("7_agsc7")
 
 [node name="Character3" parent="RedHandler" unique_id=1554084172 groups=["red_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(984, 473)
 char_name = &"Alicia"
-archetype = ExtResource("4_w40i5")
+archetype = ExtResource("8_agsc7")
 
 [node name="InfoLayer" type="CanvasLayer" parent="." unique_id=914472660]
 

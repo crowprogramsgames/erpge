@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://ba146qm3h8sr1"]
+
+[ext_resource type="Script" uid="uid://b2sixji3wqlhd" path="res://archetypes/pruebas/Speedy/a_speedy.gd" id="1_5wli3"]
+
+[resource]
+script = ExtResource("1_5wli3")
+active_name = "Accelerate"
+active_desc = "Grants [color=\"ffdf00\"]Speedy[/color] status to [color=\"00ff44\"]target[/color] creature"
+metadata/_custom_type_script = "uid://b7d6rex4qpujm"

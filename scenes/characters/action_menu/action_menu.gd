@@ -9,13 +9,13 @@ func _ready() -> void:
 
 func _on_skip_pressed() -> void:
 	Action.set_action(Action.ACTION.SKIP, Action.SELECTABLE.NONE, Action.RESTRICTION.NONE)
-	get_parent().archetype.skip_action(get_parent())
+	get_parent().passive.skip_action(get_parent())
 
 
 func _on_protect_button_pressed() -> void:
 	Action.set_action(Action.ACTION.PROTECT, Action.SELECTABLE.NONE, Action.RESTRICTION.NONE)
 
-	get_parent().archetype.protect_action(get_parent())
+	get_parent().passive.protect_action(get_parent())
 
 func _on_active_button_pressed() -> void:
 	var arch : Archetype = get_parent().archetype
@@ -27,7 +27,7 @@ func _on_active_button_pressed() -> void:
 
 func _on_attack_button_pressed() -> void:
 	#Action.set_action(Action.ACTION.ATTACK, Action.SELECTABLE.ENEMY, Action.RESTRICTION.ALIVE)
-	get_parent().archetype.attack_action(get_parent())
+	get_parent().passive.attack_action(get_parent())
 
 
 func _on_cancel_button_pressed() -> void:
