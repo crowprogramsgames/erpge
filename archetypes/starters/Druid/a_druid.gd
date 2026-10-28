@@ -1,7 +1,7 @@
 extends Active
 
 func a_action(o : Character) -> void:
-	Action.set_action(Action.ACTION.ABILITY, Action.SELECTABLE.NONE, Action.RESTRICTION.ALIVE)
+	Action.set_action(Action.ActionType.ABILITY, Action.Selectable.NONE, Action.Restriction.ALIVE)
 	a_ability(o, o)
 
 func a_ability(o: Character, t: Character) -> void:

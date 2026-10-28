@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-enum HIT {CRIT_MISS, MISS, HIT, CRIT_HIT}
+enum AttackResult {CRIT_MISS, MISS, HIT, CRIT_HIT}
 
 #UTIL
 func roll20():
@@ -19,7 +19,7 @@ func attack(origin : Character, target : Character) -> void:
 		pass
 	else:
 		var dmg : int = damage(pre_bonus, hit_mult, origin, target)
-		print(origin.char_name + " has dealt " + str(dmg) + " damage to " + target.char_name)
+		print(origin.cha_name + " has dealt " + str(dmg) + " damage to " + target.cha_name)
 		target.passive.be_dealt_dmg(target, dmg)
 		if(dmg > 0):
 			Events.attack_hit.emit(origin, target)
@@ -27,7 +27,7 @@ func attack(origin : Character, target : Character) -> void:
 	origin.passive.end_of_turn(origin)
 	
 func hit(roll: int, origin : Character, target : Character) -> Array[float]:
-	var hit_state : HIT = HIT.HIT
+	var hit_state : AttackResult = AttackResult.HIT
 	var hit_mult : float = 0
 	var pre_bonus : int = 0
 	var attack_roll = roll + origin.passive.tot_fin(origin)
@@ -37,15 +37,15 @@ func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 	
 	if roll <= max(1, -origin.passive.tot_vir(origin)):
 		hit_mult = -1
-		hit_state = HIT.CRIT_MISS
+		hit_state = AttackResult.CRIT_MISS
 	elif roll >= min(20, 20 - origin.passive.tot_vir(origin)):
 		hit_mult += origin.archetype.crit_mult + origin.passive.tot_vir(origin) * origin.archetype.crit_range
-		hit_state = HIT.CRIT_HIT
+		hit_state = AttackResult.CRIT_HIT
 	elif(diff < 0):
-		hit_state = HIT.MISS
+		hit_state = AttackResult.MISS
 		hit_mult = -1
 	
-	if(hit_state == HIT.MISS || hit_state == HIT.CRIT_MISS):
+	if(hit_state == AttackResult.MISS || hit_state == AttackResult.CRIT_MISS):
 		Events.attack_missed.emit(origin, target)
 	
 	return [hit_mult, pre_bonus]

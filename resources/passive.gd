@@ -4,85 +4,89 @@ extends Resource
 @export var passive_name : String = ""
 @export_multiline var passive_desc : String = ""
 
+enum Trigger {START_OF_TURN, END_OF_TURN}
+
 var origin : Character
+var active : bool = true
 
-func set_passive(o: Character):
+func set_passive(_o: Character):
 	pass
-
+func deactivate():
+	active = false
 #TURN
-func character_turn(char : Character):
-	start_of_turn(char)
-	if char.status.can_act:
-		action_setup(char)
+func character_turn(cha : Character):
+	start_of_turn(cha)
+	if cha.status.can_act:
+		action_setup(cha)
 	else:
-		end_of_turn(char)
+		end_of_turn(cha)
 
-func start_of_turn(char : Character):
-	effect_countdown(1, char)
-	add_crystals(1, char)
+func start_of_turn(cha : Character):
+	effect_countdown(1, cha)
+	add_crystals(1, cha)
 
-func action_setup(char : Character):
-	char.action_menu.show()
+func action_setup(cha : Character):
+	cha.action_menu.show()
 
-func end_of_turn(char : Character):
+func end_of_turn(cha : Character):
 	Events.end_turn.emit()
 
 #ACTIONS
-func skip_action(char : Character):
-	Action.set_action(Action.ACTION.SKIP, Action.SELECTABLE.NONE, Action.RESTRICTION.NONE)
-	add_crystals(1, char)
-	end_of_turn(char)
+func skip_action(cha : Character):
+	Action.set_action(Action.ActionType.SKIP, Action.Targets.NONE, Action.Restriction.NONE, false)
+	add_crystals(1, cha)
+	end_of_turn(cha)
 
-func protect_action(char : Character):
-	Action.set_action(Action.ACTION.PROTECT, Action.SELECTABLE.NONE, Action.RESTRICTION.NONE)
-	char.status_manager.grant_status("protected", char)
+func protect_action(cha : Character):
+	Action.set_action(Action.ActionType.PROTECT, Action.Targets.NONE, Action.Restriction.NONE, false)
+	cha.status_manager.grant_status("protected", cha)
 	
-	end_of_turn(char)
+	end_of_turn(cha)
 
-func attack_action(char : Character):
-	Action.set_action(Action.ACTION.ATTACK, Action.SELECTABLE.ENEMY, Action.RESTRICTION.ALIVE)
-	char.action_menu.cancelBtn.show()
+func attack_action(cha : Character):
+	Action.set_action(Action.ActionType.ATTACK, Action.Targets.ENEMY, Action.Restriction.ALIVE, true)
+	cha.action_menu.cancelBtn.show()
 	Events.choose_target.emit()
 
 func targeted_action(origin : Character, target : Character):
 	match Action.action:
-		Action.ACTION.ATTACK:
+		Action.ActionType.ATTACK:
 			GL.attack(origin, target)
-		Action.ACTION.ABILITY:
+		Action.ActionType.ABILITY:
 			origin.active.a_ability(origin, target)
 
 #UTILITY
-func add_crystals(q : int, char : Character) -> int:
-	if(char.curr_crystals + q > char.max_crystals):
-		q = char.archetype.max_crystals - char.curr_crystals
-	char.set_crystals(char.curr_crystals + q)
-	print(char.char_name + " has obtained " + str(q) + (" crystal" if q == 1 else " crystals" ))
-	if(char.curr_crystals == char.max_crystals):
+func add_crystals(q : int, cha : Character) -> int:
+	if(cha.curr_crystals + q > cha.max_crystals):
+		q = cha.archetype.max_crystals - cha.curr_crystals
+	cha.set_crystals(cha.curr_crystals + q)
+	print(cha.cha_name + " has obtained " + str(q) + (" crystal" if q == 1 else " crystals" ))
+	if(cha.curr_crystals == cha.max_crystals):
 		pass
-		print(char.char_name + " has reached its maximum crystals")
-	return char.curr_crystals
+		print(cha.cha_name + " has reached its maximum crystals")
+	return cha.curr_crystals
 
-func effect_countdown(q : int, char : Character):
-	var d = char.status.change_duration(-q)
+func effect_countdown(q : int, cha : Character):
+	var d = cha.status.change_duration(-q)
 	if(d <= 0):
-		char.status_manager.grant_status("neutral", char)
+		cha.status_manager.grant_status("neutral", cha)
 	
 	var ed : int
-	for ef in char.effect_manager.effect_list:
+	for ef in cha.effect_manager.effect_list:
 		ed = ef.change_duration(-q)
 		if(ed <= 0):
-			char.effect_manager.delete_effect(ef)
+			cha.effect_manager.delete_effect(ef)
 
-func add_initiative(char : Character) -> void:
-	char.initiative += 30 - tot_ref(char)
-	Events.initiative_given.emit(char)
+func add_initiative(cha : Character) -> void:
+	cha.initiative += 30 - tot_ref(cha)
+	Events.initiative_given.emit(cha)
 
-func kill_char(char : Character) -> void:
-	char.status_manager.grant_status("dead", char)
+func kill_cha(cha : Character) -> void:
+	cha.status_manager.grant_status("dead", cha)
 
-func be_dealt_dmg(char : Character, dmg : int) -> void:
-	char.lose_health(dmg)
-	char.update_stats()
+func be_dealt_dmg(cha : Character, dmg : int) -> void:
+	cha.lose_health(dmg)
+	cha.update_stats()
 
 #STATS
 func tot_pow(o : Character) -> int:

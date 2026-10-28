@@ -11,7 +11,7 @@ func _find_status(status_n : StringName) -> Status:
 			return status
 	return null
 
-func _can_be_granted(status_n : StringName , char : Character) -> Status:
+func _can_be_granted(status_n : StringName , cha : Character) -> Status:
 	return _find_status(status_n)
 
 func grant_status(status_n : StringName, target : Character):

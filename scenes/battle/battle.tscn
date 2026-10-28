@@ -33,34 +33,28 @@ color = Color(0.105882354, 0.105882354, 0.105882354, 0.69411767)
 
 [node name="Character" parent="BlueHandler" unique_id=1370791865 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(132, 156)
-char_name = &"Paco"
 archetype = ExtResource("3_pll4o")
 
 [node name="Character2" parent="BlueHandler" unique_id=2133214311 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(271, 307)
-char_name = &"Pedro"
 archetype = ExtResource("4_fh7rg")
 
 [node name="Character3" parent="BlueHandler" unique_id=1590214184 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(130, 470)
-char_name = &"Paula"
 archetype = ExtResource("5_agsc7")
 
 [node name="RedHandler" type="Node2D" parent="." unique_id=96916074]
 
 [node name="Character" parent="RedHandler" unique_id=726112052 groups=["red_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(986, 161)
-char_name = &"Annais"
 archetype = ExtResource("6_py4tk")
 
 [node name="Character2" parent="RedHandler" unique_id=1893845541 groups=["red_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(857, 316)
-char_name = &"Antonio"
 archetype = ExtResource("7_agsc7")
 
 [node name="Character3" parent="RedHandler" unique_id=1554084172 groups=["red_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(984, 473)
-char_name = &"Alicia"
 archetype = ExtResource("8_agsc7")
 
 [node name="InfoLayer" type="CanvasLayer" parent="." unique_id=914472660]

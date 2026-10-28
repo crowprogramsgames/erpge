@@ -2,5 +2,5 @@ class_name HealthUI
 extends Label
 
 func update_hp() -> void:
-	var char = get_parent()
-	text = "HP: %d/%d" % [char.hp, char.max_hp]
+	var cha = get_parent()
+	text = "HP: %d/%d" % [cha.hp, cha.max_hp]

@@ -9,7 +9,7 @@ signal end_turn
 signal choose_target
 signal cancel_pressed
 #INFORMATION-BLOCK
-signal call_info(char : Character)
+signal call_info(cha : Character)
 signal close_info
 
 #EFFECTS & STATUSES
