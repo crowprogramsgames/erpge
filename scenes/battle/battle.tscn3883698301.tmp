@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://bodm2l08c8c8i"]
+
+[ext_resource type="Script" uid="uid://dxmrj33k40akw" path="res://scenes/battle/battle.gd" id="1_hyhfg"]
+[ext_resource type="Resource" uid="uid://bl5cuo1kjbrkg" path="res://archetypes/pruebas/Chilly/chilly.tres" id="3_fh7rg"]
+[ext_resource type="Resource" uid="uid://ctlpm2r8l0cf8" path="res://archetypes/pruebas/Angry/angry.tres" id="3_h0kxc"]
+[ext_resource type="PackedScene" uid="uid://bw41icrjlvr7" path="res://scenes/characters/character.tscn" id="3_jkydm"]
+[ext_resource type="Resource" uid="uid://cjk8lan8oanyp" path="res://archetypes/pruebas/Lucky/lucky.tres" id="4_pll4o"]
+[ext_resource type="Resource" uid="uid://brmqlw3a4obw7" path="res://archetypes/pruebas/Beefy/beefy.tres" id="6_py4tk"]
+[ext_resource type="Script" uid="uid://chyypd4kosl8q" path="res://scenes/battle/action.gd" id="20_fe4ja"]
+
+[node name="Battle" type="Node2D" unique_id=1538658190]
+script = ExtResource("1_hyhfg")
+metadata/_edit_horizontal_guides_ = [88.0, 569.0, 323.0, 281.0, 363.0]
+metadata/_edit_vertical_guides_ = [152.0, 355.0, 998.0, 791.0, 573.0]
+
+[node name="Background" type="ColorRect" parent="." unique_id=1376968691]
+light_mask = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.605274, 0.605274, 0.605274, 1)
+
+[node name="DarkBg" type="ColorRect" parent="." unique_id=974706173]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.105882354, 0.105882354, 0.105882354, 0.69411767)
+
+[node name="BlueHandler" type="Node2D" parent="." unique_id=1051458434]
+
+[node name="Character" parent="BlueHandler" unique_id=1370791865 groups=["blue_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(132, 156)
+char_name = &"Paco"
+archetype = ExtResource("3_fh7rg")
+
+[node name="Character2" parent="BlueHandler" unique_id=2133214311 groups=["blue_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(271, 307)
+char_name = &"Pedro"
+archetype = ExtResource("4_pll4o")
+
+[node name="Character3" parent="BlueHandler" unique_id=1590214184 groups=["blue_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(130, 470)
+char_name = &"Paula"
+archetype = ExtResource("3_h0kxc")
+
+[node name="RedHandler" type="Node2D" parent="." unique_id=96916074]
+
+[node name="Character" parent="RedHandler" unique_id=726112052 groups=["red_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(986, 161)
+char_name = &"Lina"
+archetype = ExtResource("6_py4tk")
+
+[node name="Character2" parent="RedHandler" unique_id=1893845541 groups=["red_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(857, 316)
+char_name = &"Luis"
+archetype = ExtResource("6_py4tk")
+
+[node name="Character3" parent="RedHandler" unique_id=1554084172 groups=["red_team"] instance=ExtResource("3_jkydm")]
+position = Vector2(984, 473)
+char_name = &"Lorena"
+archetype = ExtResource("6_py4tk")
+
+[node name="InfoLayer" type="CanvasLayer" parent="." unique_id=914472660]
+
+[node name="Info" type="Control" parent="InfoLayer" unique_id=341434763]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 403.0
+offset_top = 22.0
+offset_right = 737.0
+offset_bottom = 445.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="InfoLayer/Info" unique_id=1571742912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27058825, 0.27058825, 0.27058825, 0.6901961)
+
+[node name="Label" type="Label" parent="InfoLayer/Info" unique_id=764205930]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 21.0
+offset_right = 276.0
+offset_bottom = 107.0
+text = "Hello, this is info about the character"
+autowrap_mode = 2
+
+[node name="Action" type="Node" parent="." unique_id=2090941461]
+unique_name_in_owner = true
+script = ExtResource("20_fe4ja")

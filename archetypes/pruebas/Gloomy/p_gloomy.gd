@@ -1,13 +1,14 @@
 extends Passive
 
-var health_loss = 3
+@export var health_loss = 3
 
-func set_passive(o: Character):
+func _set_triggers():
 	Events.attack_missed.connect(_on_attack_missed)
-	origin = o
 
-func _on_attack_missed(o: Character , t: Character):
-	if !GL.allies_o_enemies(origin, o):
-		o.lose_health(health_loss)
-		o.update_stats()
+func _set_modifiers():
+	pass
+
+func _on_attack_missed(origin: Character , target: Character):
+	if target == source:
+		origin.stats.lose_health(health_loss)
 	

@@ -2,7 +2,11 @@ extends Passive
 
 var add_end : int = 6
 
-func tot_end(o : Character) -> int:
-	if o.hp >= o.max_hp / 2:
-		return o.end + o.status.t_end + o.effect_manager.t_end()
-	return o.end + o.status.t_end + o.effect_manager.t_end() + add_end
+func _set_triggers():
+	pass
+
+func _set_modifiers():
+	var new_mod : Modifier
+	for mod in mod_list:
+		new_mod = mod.duplicate()
+		new_mod.attach_mod(source)

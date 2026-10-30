@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_yarvc")
-status_name = "Frozen"
-status_desc = "This creature´s reflexes were lowered"
+effect_name = "frozen"
 t_ref = -5
-duration = 3
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

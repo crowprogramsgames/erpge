@@ -1,7 +1,10 @@
 [gd_resource type="Resource" format=3 uid="uid://q6l8npoir5uc"]
 
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_lnj1e"]
 [ext_resource type="Script" uid="uid://dronyo1e3fwh0" path="res://archetypes/pruebas/Lucky/p_lucky.gd" id="1_yloy4"]
+[ext_resource type="Resource" uid="uid://c30cs5ayydj0k" path="res://archetypes/pruebas/Lucky/lucky_mod_1.tres" id="2_pkfqa"]
 
 [resource]
 script = ExtResource("1_yloy4")
+mod_list = Array[ExtResource("1_lnj1e")]([ExtResource("2_pkfqa")])
 metadata/_custom_type_script = "uid://dmlaesjve55vy"

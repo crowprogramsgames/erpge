@@ -109,5 +109,5 @@ text = "CANCEL"
 [connection signal="pressed" from="BoxContainer/HBoxContainer/AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer/ActiveButton" to="." method="_on_active_button_pressed"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer/VBoxContainer/ProtectButton" to="." method="_on_protect_button_pressed"]
-[connection signal="pressed" from="BoxContainer/HBoxContainer/VBoxContainer/SkipButton" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer/VBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="CancelButton" to="." method="_on_cancel_button_pressed"]

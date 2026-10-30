@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Modifier" format=3 uid="uid://bjmo32u5n6acv"]
+
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_iepdn"]
+
+[resource]
+script = ExtResource("1_iepdn")
+affected = 3
+can_expire = false
+t_ini = 3
+duration = 0
+metadata/_custom_type_script = "uid://df27rfrtjx2ou"

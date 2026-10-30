@@ -4,8 +4,7 @@
 
 [resource]
 script = ExtResource("1_phevr")
-status_name = "Neutral"
-status_desc = "This creature is in a stable condition. No stats changed"
-expires = false
+effect_name = "neutral"
+can_expire = false
 duration = -1
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

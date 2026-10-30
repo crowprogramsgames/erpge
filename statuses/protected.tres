@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_pmu1p")
-status_name = "Protected"
-status_desc = "This creature´s endurance was risen"
+effect_name = "protected"
 t_end = 5
-duration = 3
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

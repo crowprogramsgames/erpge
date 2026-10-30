@@ -4,11 +4,10 @@
 
 [resource]
 script = ExtResource("1_pl5g3")
-status_name = "Dead"
-status_desc = "This creature has fallen, they can´t act or be attacked"
+effect_name = "dead"
 can_act = false
-expires = false
 can_be_targeted = false
+can_expire = false
 defeat = true
 duration = -1
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

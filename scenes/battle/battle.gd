@@ -15,21 +15,23 @@ var curr : Character
 func _ready():
 	_set_events()
 	_set_teams()
+	_set_mods()
 	_set_starting_initiative()
 	_start_of_game()
 	_turn()
 
 #START OF GAME
-
 func _set_events():
+	#DARKBG
+	Events.hide_dark_bg.connect(_on_hide_dark_bg)
+	Events.show_dark_bg.connect(_on_show_dark_bg)
 	#INFO
 	Events.call_info.connect(_on_call_info)
 	Events.close_info.connect(_on_close_info)
 	#TARGET
 	Events.target_selected.connect(_on_target_selected)
-	Events.choose_target.connect(_on_choose_target)
-	#ACTIONS
-	Events.cancel_pressed.connect(_on_cancel_pressed)
+	#MODIFIERS
+	Events.attach_mod.connect(_on_attach_mod)
 	#TURN PHASES
 	Events.end_turn.connect(_on_end_turn)
 	#CLEANUP
@@ -37,7 +39,13 @@ func _set_events():
 func _set_teams():
 	_update_teams()
 	for adv in adventurers: adv.set_team()
-func _set_starting_initiative(): for adv in adventurers: adv.set_starting_initiative()
+func _set_mods():
+	for adv : Character in adventurers:
+		adv.passive.set_up_mods()
+func _set_starting_initiative():
+	for adv : Character in adventurers:
+		adv.add_initiative(true)
+		
 func _start_of_game(): Events.start_of_game.emit()
 func _turn():
 	curr = _find_next()
@@ -46,15 +54,14 @@ func _turn():
 
 #TURN
 func _find_next() -> Character:
-	var current : Character
+	var current = curr
 	for adv in adventurers:
 			if current == null:
 				current = adv
-			if adv.initiative < current.initiative:
+			if adv.stats.initiative < current.stats.initiative:
 				current = adv
 	return current
-
-func _can_be_targeted(origin : Character, target : Character) -> bool:
+func _can_be_targeted(target : Character) -> bool:
 	var selectable : bool = true
 	match Action.targets:
 		Action.Targets.NONE:
@@ -73,9 +80,9 @@ func _can_be_targeted(origin : Character, target : Character) -> bool:
 	if(selectable):
 		match Action.restriction:
 			Action.Restriction.ALIVE:
-				selectable = !target.check_status("dead")
+				selectable = !target.status_manager.check_status("dead")
 			Action.Restriction.DEAD:
-				selectable = target.check_status("dead")
+				selectable = target.status_manager.check_status("dead")
 			Action.Restriction.BOTH:
 				selectable = true
 			Action.Restriction.ANY:
@@ -85,18 +92,18 @@ func _can_be_targeted(origin : Character, target : Character) -> bool:
 	return selectable
 
 #SIGNALS
-func _on_call_info(cha : Character): info.show()
+func _on_call_info(_cha : Character): info.show()
 func _on_close_info(): info.hide()
 func _on_end_turn():
-	darkBg.hide()
+	Events.hide_dark_bg.emit()
 	curr.turn_platform.hide()
 	curr.action_menu.cancelBtn.hide()
-	curr.passive.add_initiative(curr)
 	curr.action_menu.hide()
+	curr.add_initiative(false)
 	_turn()
-func _on_choose_target() -> void: darkBg.show() #BETA : CHANGE TO CHARACTER
-func _on_cancel_pressed() -> void: darkBg.hide() #BETA : CHANGE TO CHARACTER
-func _on_target_selected(target : Character) -> void: if _can_be_targeted(curr, target): curr.passive.targeted_action(curr, target) #CHANGE TO CHARACTER
+func _on_target_selected(target : Character) -> void:
+	if _can_be_targeted(target):
+		curr.targeted_action(target) #CHANGE TO CHARACTER
 func _on_check_bodies(): #BETA
 	_update_teams()
 	
@@ -104,10 +111,10 @@ func _on_check_bodies(): #BETA
 	var blueDefeat = true
 	
 	for adv in redTeam:
-		if !adv.status.defeat:
+		if !adv.status_manager.status.defeat:
 			redDefeat = false
 	for adv in blueTeam:
-		if !adv.status.defeat:
+		if !adv.status_manager.status.defeat:
 			blueDefeat = false
 	
 	if redDefeat || blueDefeat:
@@ -120,9 +127,41 @@ func _on_check_bodies(): #BETA
 				print("red wins")
 		_end_game()
 func _end_game(): get_tree().quit()
+func _on_attach_mod(mod : Modifier , src : Character):
+	print("on attach mod")
+	var affected_list : Array[Character] = _get_affected_list(mod , src)
+	var new_mod : Modifier 
+	for adv in affected_list:
+		new_mod = mod.duplicate()
+		new_mod.char_affected = adv
+		adv.modifier_manager.add_mod(new_mod, adv)
+func _on_hide_dark_bg(): darkBg.hide()
+func _on_show_dark_bg(): darkBg.show()
 
 #UTILS
 func _update_teams():
 	redTeam = get_tree().get_nodes_in_group("red_team")
 	blueTeam = get_tree().get_nodes_in_group("blue_team")
 	adventurers = get_tree().get_nodes_in_group("adventurers")
+func _get_affected_list(mod : Modifier, src : Character) -> Array[Character]:
+	var affected = mod.affected
+	var affected_list : Array[Character] = []
+	match affected:
+		Modifier.Affected.SELF:
+			affected_list.append(src)
+		Modifier.Affected.ALLIES:
+			for adv in adventurers:
+				if GL.allies_o_enemies(src, adv):
+					affected_list.append(adv)
+		Modifier.Affected.OTHER_ALLIES:
+			for adv in adventurers:
+				if GL.allies_o_enemies(src, adv) && adv != src:
+					affected_list.append(adv)
+		Modifier.Affected.ENEMIES:
+			for adv in adventurers:
+				if !GL.allies_o_enemies(src, adv):
+					affected_list.append(adv)
+		Modifier.Affected.ALL:
+			for adv in adventurers:
+				affected_list.append(adv)
+	return affected_list

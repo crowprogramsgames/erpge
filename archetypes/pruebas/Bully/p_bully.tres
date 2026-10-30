@@ -1,5 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://crhpihyye2d45"]
 
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_c0fvo"]
 [ext_resource type="Script" uid="uid://cc3wegrwxcws" path="res://archetypes/pruebas/Bully/p_bully.gd" id="1_ji30i"]
 
 [resource]

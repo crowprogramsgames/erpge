@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_tvvcb")
-status_name = "Blessed"
-status_desc = "This creature´s virtue was risen"
+effect_name = "blessed"
 t_vir = 5
-duration = 3
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

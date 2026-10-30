@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_1em4o")
-status_name = "Cursed"
-status_desc = "This creature´s virtue was lowered"
+effect_name = "cursed"
 t_vir = -5
-duration = 3
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

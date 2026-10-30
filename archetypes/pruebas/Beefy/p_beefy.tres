@@ -1,7 +1,10 @@
 [gd_resource type="Resource" format=3 uid="uid://cy5o7k8qoighb"]
 
 [ext_resource type="Script" uid="uid://dc6qcsfu6rmxi" path="res://archetypes/pruebas/Beefy/p_beefy.gd" id="1_65idb"]
+[ext_resource type="Resource" uid="uid://b2wu40ft0mn0q" path="res://archetypes/pruebas/Beefy/beefy_mod_1.tres" id="1_tw8wj"]
 
 [resource]
 script = ExtResource("1_65idb")
+passive_name = "Beefy Endurance"
+mod_list = Array[Object]([ExtResource("1_tw8wj")])
 metadata/_custom_type_script = "uid://dmlaesjve55vy"

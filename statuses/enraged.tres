@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_arq51")
-status_name = "Enraged"
-status_desc = "This creatures power was risen"
+effect_name = "enraged"
 t_pow = 5
-duration = 3
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

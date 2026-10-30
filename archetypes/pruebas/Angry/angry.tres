@@ -6,13 +6,14 @@
 [ext_resource type="Resource" uid="uid://c1ethuiqgq5mw" path="res://archetypes/pruebas/Angry/p_angry.tres" id="2_1yca4"]
 [ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="4_gce5j"]
 [ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="5_mtwf2"]
+[ext_resource type="Resource" uid="uid://c40gkn1pwomot" path="res://archetypes/pruebas/stats.tres" id="6_1yca4"]
 
 [resource]
 script = ExtResource("1_fgbgo")
 arch_name = "Angry"
 arch_desc = "Grants \"enraged\" status to an ally"
 portrait = ExtResource("1_r6bii")
-base_hp = 50
+stats = ExtResource("6_1yca4")
 passive_ability = ExtResource("2_1yca4")
 active_ability = ExtResource("1_mtwf2")
 weapon = ExtResource("4_gce5j")

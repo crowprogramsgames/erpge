@@ -6,11 +6,12 @@
 [ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="3_qnh61"]
 [ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="4_38lcv"]
 [ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="5_gla4t"]
+[ext_resource type="Resource" uid="uid://c40gkn1pwomot" path="res://archetypes/pruebas/stats.tres" id="6_qnh61"]
 
 [resource]
 script = ExtResource("3_qnh61")
 portrait = ExtResource("3_lbuff")
-base_hp = 50
+stats = ExtResource("6_qnh61")
 passive_ability = ExtResource("2_lbuff")
 active_ability = ExtResource("1_kopb6")
 weapon = ExtResource("5_gla4t")

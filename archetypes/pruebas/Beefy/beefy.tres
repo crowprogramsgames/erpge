@@ -6,13 +6,14 @@
 [ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_ij73q"]
 [ext_resource type="Resource" uid="uid://7jgep15af5f0" path="res://items/weapons/unnarmed.tres" id="3_4e52e"]
 [ext_resource type="Texture2D" uid="uid://b0o1aj5ipjy2d" path="res://art/adv_sprites/end_files.png" id="3_bro54"]
+[ext_resource type="Resource" uid="uid://c40gkn1pwomot" path="res://archetypes/pruebas/stats.tres" id="6_uxk5j"]
 
 [resource]
 script = ExtResource("1_ct03e")
 arch_name = "Beefy"
 arch_desc = "Very chunky"
 portrait = ExtResource("3_bro54")
-base_hp = 50
+stats = ExtResource("6_uxk5j")
 passive_ability = ExtResource("2_bro54")
 active_ability = ExtResource("1_4e52e")
 metadata/_custom_type_script = "uid://qoe7jgamtuc7"

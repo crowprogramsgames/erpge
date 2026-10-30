@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_a3cv2")
-status_name = "Weakened"
-status_desc = "This creature´s power was lowered"
+effect_name = "weakened"
 t_pow = -5
-duration = 3
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

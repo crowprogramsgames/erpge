@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://bw41icrjlvr7"]
+
+[ext_resource type="Texture2D" uid="uid://bta10ul4ulft2" path="res://art/adv_sprites/red_platform.png" id="1_1bdar"]
+[ext_resource type="Script" uid="uid://be0hqvchmqs0j" path="res://scenes/characters/character.gd" id="1_ma1fs"]
+[ext_resource type="Texture2D" uid="uid://c0wir1vojm65h" path="res://art/adv_sprites/dum_files.png" id="2_e22cc"]
+[ext_resource type="Texture2D" uid="uid://c5ib6mum6to02" path="res://art/adv_sprites/platform.png" id="2_yscb1"]
+[ext_resource type="Texture2D" uid="uid://c00hshbov218r" path="res://art/adv_sprites/arrow.png" id="5_ma1fs"]
+[ext_resource type="PackedScene" uid="uid://rrr7imcjaevx" path="res://scenes/characters/action_menu/action_menu.tscn" id="5_yscb1"]
+[ext_resource type="Script" uid="uid://cphlevkk7mh0n" path="res://scenes/characters/ui/health_ui.gd" id="7_ysl2u"]
+[ext_resource type="Script" uid="uid://jkqxkq6bys2m" path="res://scenes/characters/ui/status_ui.gd" id="8_oqd6d"]
+[ext_resource type="Script" uid="uid://bbrhbynn3wco3" path="res://scenes/characters/managers/effect_manager.gd" id="23_c05sq"]
+[ext_resource type="Script" uid="uid://b3hqx22q218i" path="res://scenes/characters/managers/modifier_manager.gd" id="24_gao2u"]
+
+[sub_resource type="Shader" id="Shader_2qjml"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ma1fs"]
+shader = SubResource("Shader_2qjml")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qjml"]
+radius = 18.0
+height = 50.0
+
+[sub_resource type="GDScript" id="GDScript_8gmw8"]
+
+[node name="Character" type="Node2D" unique_id=1370791865 groups=["adventurers"]]
+script = ExtResource("1_ma1fs")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=511170090]
+offset_left = -4.0
+offset_top = 8.0
+offset_right = 18.0
+offset_bottom = 21.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TurnPlatform" type="Sprite2D" parent="." unique_id=786811925]
+visible = false
+texture_filter = 1
+position = Vector2(4.9999924, -15)
+scale = Vector2(5.739584, 3.6132817)
+texture = ExtResource("2_yscb1")
+
+[node name="Platform" type="Sprite2D" parent="." unique_id=2025321820]
+texture_filter = 1
+position = Vector2(8, -5)
+scale = Vector2(3, 3)
+texture = ExtResource("1_1bdar")
+
+[node name="CharSprite" type="Sprite2D" parent="." unique_id=1296872367]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ma1fs")
+position = Vector2(9, 14)
+scale = Vector2(3, 3)
+texture = ExtResource("2_e22cc")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=373482975]
+visible = false
+texture_filter = 1
+position = Vector2(4, -69)
+scale = Vector2(3, 3)
+texture = ExtResource("5_ma1fs")
+
+[node name="AdvArea" type="Area2D" parent="." unique_id=683885129]
+light_mask = 2
+visibility_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AdvArea" unique_id=504606045]
+position = Vector2(1, -9)
+scale = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_2qjml")
+
+[node name="ActionMenu" parent="." unique_id=198874320 instance=ExtResource("5_yscb1")]
+layer = 2
+visible = false
+
+[node name="StatusManager" type="Node" parent="." unique_id=579821028]
+script = SubResource("GDScript_8gmw8")
+
+[node name="EffectManager" type="Node" parent="." unique_id=92209809]
+script = ExtResource("23_c05sq")
+
+[node name="ModifierManager" type="Node" parent="." unique_id=476128576]
+script = ExtResource("24_gao2u")
+
+[node name="StatsUI" type="Control" parent="." unique_id=1421004411]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Health" type="Label" parent="StatsUI" unique_id=358184528]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -19.0
+offset_top = -105.0
+offset_right = 55.0
+offset_bottom = -82.0
+text = "HP: 50/50"
+script = ExtResource("7_ysl2u")
+
+[node name="Status" type="Label" parent="StatsUI" unique_id=1195892027]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -117.0
+offset_top = -123.0
+offset_right = 5.0
+offset_bottom = -100.0
+text = "Current Status: "
+script = ExtResource("8_oqd6d")
+
+[connection signal="input_event" from="AdvArea" to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="AdvArea" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="AdvArea" to="." method="_on_mouse_exited"]

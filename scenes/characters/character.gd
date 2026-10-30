@@ -15,37 +15,24 @@ const RED_PLATFORM = preload("res://art/adv_sprites/red_platform.png")
 #MANAGERS
 @onready var status_manager : StatusManager = $StatusManager
 @onready var effect_manager : EffectManager = $EffectManager
-
+@onready var modifier_manager : ModifierManager = $ModifierManager
 #CHARACTER-ISTICS
 #Description
-@export var cha_name : StringName
+@export var char_name : StringName
 
 #Archetype
 @export var archetype : Archetype :set = _set_character
 
+var stats : Stats
 var passive : Passive
 var active : Active
 var weapon : Weapon
-var status : Status
-var effect_list : Array[Effect]
 
-#Crystals
-var curr_crystals : int
-var max_crystals : int
-
-#Stats
-var max_hp : int
-var hp : int
-var pow : int
-var end : int
-var fin : int
-var ref : int
-var vir : int
-
-#In-game-stats
-var initiative : int = 0
 
 ##FUNCTIONS
+func _ready():
+	Events.stat_changes.connect(_update_stats)
+
 #SETTERS
 func _set_character(arch : Archetype) -> void:
 	if not is_inside_tree():
@@ -53,55 +40,93 @@ func _set_character(arch : Archetype) -> void:
 	archetype = arch.duplicate()
 	#Ui
 	sprite.texture = archetype.portrait
-	
+	_set_stats()
 	_set_passive()
 	_set_active()
 	_set_weapon()
-	_set_stats()
 	
-	update_stats()
-
 func _set_active(): active = archetype.active_ability.duplicate()
 func _set_passive():
 	passive = archetype.passive_ability.duplicate()
-	passive.set_passive(self)
+	passive.set_source(self)
 func _set_weapon(): weapon = archetype.weapon.duplicate()
 func _set_stats():
-	curr_crystals = archetype.starting_crystals
-	max_crystals = archetype.max_crystals
-	max_hp = archetype.base_hp
-	hp = max_hp
-	pow = archetype.base_pow
-	end = archetype.base_end
-	fin = archetype.base_fin
-	ref = archetype.base_ref
-	vir = archetype.base_vir
-	status = archetype.starting_status.duplicate()
-
+	stats = archetype.stats.duplicate()
+	stats.char_name = char_name
+	status_manager.status = archetype.starting_status.duplicate()
+	
+	health_ui.stats = stats
+	status_ui.status_manager = status_manager
+	
+	_update_stats()
 
 func set_team() -> void:
 	if is_in_group("red_team"):
 		platform.texture = RED_PLATFORM
 	else:
 		platform.texture = BLUE_PLATFORM
-func set_starting_initiative() -> void:
-	initiative = GL.roll20() - passive.tot_ref(self)
+
+#TURN
+func character_turn():
+	start_of_turn()
+	if status_manager.status.can_act: action_setup()
+	else: end_of_turn()
+func start_of_turn():
+	effect_countdown(stats.cd_per_turn)
+	stats.add_crystals(stats.cry_per_turn)
+func action_setup(): action_menu.show()
+func end_of_turn(): Events.end_turn.emit()
+
+#ACTIONS
+func skip_action():
+	Action.set_action(Action.ActionType.SKIP, Action.Targets.NONE, Action.Restriction.NONE, false)
+	stats.add_crystals(stats.skip_crystals)
+	end_of_turn()
+func protect_action():
+	Action.set_action(Action.ActionType.PROTECT, Action.Targets.NONE, Action.Restriction.NONE, false)
+	status_manager.grant_status("protected")
+	end_of_turn()
+func attack_action():
+	Action.set_action(Action.ActionType.ATTACK, Action.Targets.ENEMY, Action.Restriction.ALIVE, true)
+	action_menu.cancelBtn.show()
+	Events.choose_target.emit()
+func targeted_action(target : Character):
+	match Action.actiontype:
+		Action.ActionType.ATTACK:
+			GL.attack(self, target)
+		Action.ActionType.ABILITY:
+			active.a_ability(self, target)
 
 
 #GRANT - UPDATE
-func grant_effect(tpow : int, tend : int, tfin : int, tref : int, tvir : int, dur : int):
-	effect_manager.add_effect(Effect.new_effect(tpow,tend,tfin,tref,tvir,dur))
-func update_crystals(q : int) -> void: curr_crystals = q
-func update_status() -> void: self.status = archetype.starting_status.duplicate()
-func update_stats() -> void:
+func _update_stats() -> void:
 	health_ui.update_hp()
 	status_ui.update_status()
 	Events.check_bodies.emit()
 	
-	if hp <= 0 and !check_status("dead"):
+	if stats.hp <= 0 and !status_manager.check_status("dead"):
 		_kill_cha()
 
-
+#UTILITY
+func effect_countdown(q : int):
+	var dur = status_manager.status.change_duration(-q)
+	if(dur <= 0):
+		status_manager.grant_status("neutral")
+	
+	var effect_duration : int
+	for effect in effect_manager.man_list:
+		effect_duration = effect.change_duration(-q)
+		if(effect_duration <= 0):
+			effect_manager.delete_effect(effect)
+func _kill_cha() -> void:
+	status_manager.grant_status("dead")
+func be_dealt_dmg(dmg : int) -> void:
+	stats.lose_health(dmg)
+func add_initiative(start : bool) -> void:
+	var base_ini = 30
+	if start:
+		base_ini = GL.roll20()
+	stats.initiative += base_ini - tot_stat("ref") + tot_stat("ini")
 #INPUT-EVENTS
 func _on_mouse_entered() -> void:
 	arrow.show()
@@ -109,23 +134,10 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	arrow.hide()
 	Events.close_info.emit()
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
 		Events.target_selected.emit(self)
 
-	
-#TURN
-func character_turn():
-	self.passive.character_turn(self)
-	#before action maneuver
-	#action
-	#after action maneuver
-	#end of turn
-
-#UTILITY
-func lose_health(quant : int): hp -= quant
-func check_status(status : StringName) -> bool: return status.capitalize() == self.status.status_name.capitalize()
-
-func _kill_cha() -> void:
-	status_manager.grant_status("dead", self)
-	passive.deactivate()
+#TSTATS
+func tot_stat(stat : String) -> float:
+	return stats.tot_stat(stat) + status_manager.tot_stat(stat)+ effect_manager.tot_stat(stat) + modifier_manager.tot_stat(stat)

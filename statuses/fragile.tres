@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_yxyoo")
-status_name = "Fragile"
-status_desc = "This creature´s endurance was lowered"
+effect_name = "fragile"
 t_end = -5
-duration = 3
 metadata/_custom_type_script = "uid://dpk7oq4rhsfax"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Stats" format=3 uid="uid://c40gkn1pwomot"]
+
+[ext_resource type="Script" uid="uid://dcbe8jtdelre3" path="res://resources/stats.gd" id="1_r8nvy"]
+
+[resource]
+script = ExtResource("1_r8nvy")
+max_hp = 50
+hp = 25
+curr_crystals = 0
+max_crystals = 6
+metadata/_custom_type_script = "uid://dcbe8jtdelre3"

@@ -1,10 +1,9 @@
 extends Passive
 
-func set_passive(o: Character):
-	Events.initiative_given.connect(_on_initiative_given)
-	origin = o
-
-func _on_initiative_given(o: Character):
-	if !GL.allies_o_enemies(origin, o) && origin.check_status("dead") :
-		o.initiative += 3
-	
+func _set_triggers():
+	pass
+func _set_modifiers():
+	var new_mod : Modifier
+	for mod in mod_list:
+		new_mod = mod.duplicate()
+		new_mod.attach_mod(source)

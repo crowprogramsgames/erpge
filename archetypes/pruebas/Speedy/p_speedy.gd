@@ -1,9 +1,11 @@
 extends Passive
 
-func set_passive(o: Character):
+func _set_triggers():
 	Events.start_of_game.connect(_on_start_of_game)
-	origin = o
+
+func _set_modifiers():
+	pass
 
 func _on_start_of_game():
-	origin.status_manager.grant_status("status", origin)
+	source.status_manager.grant_status("hasted")
 	
