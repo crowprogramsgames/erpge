@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bodm2l08c8c8i"]
 
 [ext_resource type="Script" uid="uid://dxmrj33k40akw" path="res://scenes/battle/battle.gd" id="1_hyhfg"]
-[ext_resource type="Resource" uid="uid://dqjgchpjekseo" path="res://archetypes/starters/Druid/druid.tres" id="3_0yh6x"]
+[ext_resource type="Resource" uid="uid://dqjgchpjekseo" path="res://archetypes/starters/Warden/warden.tres" id="3_0yh6x"]
+[ext_resource type="Resource" uid="uid://ckg57dwhj7eo5" path="res://archetypes/starters/Warrior/warrior.tres" id="3_h0kxc"]
 [ext_resource type="PackedScene" uid="uid://bw41icrjlvr7" path="res://scenes/characters/character.tscn" id="3_jkydm"]
 [ext_resource type="Script" uid="uid://chyypd4kosl8q" path="res://scenes/battle/action.gd" id="20_fe4ja"]
 
@@ -29,17 +30,17 @@ color = Color(0.105882354, 0.105882354, 0.105882354, 0.69411767)
 [node name="Character" parent="BlueHandler" unique_id=1370791865 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(132, 156)
 char_name = &"Paco"
-archetype = ExtResource("3_0yh6x")
+archetype = ExtResource("3_h0kxc")
 
 [node name="Character2" parent="BlueHandler" unique_id=2133214311 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(271, 307)
 char_name = &"Pedro"
-archetype = ExtResource("3_0yh6x")
+archetype = ExtResource("3_h0kxc")
 
 [node name="Character3" parent="BlueHandler" unique_id=1590214184 groups=["blue_team"] instance=ExtResource("3_jkydm")]
 position = Vector2(130, 470)
 char_name = &"Paula"
-archetype = ExtResource("3_0yh6x")
+archetype = ExtResource("3_h0kxc")
 
 [node name="RedHandler" type="Node2D" parent="." unique_id=96916074]
 

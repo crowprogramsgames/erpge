@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://c2xlkwhpyidre"]
+
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_4mbwl"]
+[ext_resource type="Script" uid="uid://bodhrr5nayr6x" path="res://archetypes/starters/Warrior/p_warrior.gd" id="1_y852y"]
+
+[resource]
+script = ExtResource("1_y852y")
+passive_name = "Last Stance"

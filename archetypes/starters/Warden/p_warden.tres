@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://wqnk4ov8h4yh"]
+
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_o7bt5"]
+[ext_resource type="Script" uid="uid://gmws0qse10v6" path="res://archetypes/starters/Warden/p_warden.gd" id="2_c6jfm"]
+
+[resource]
+script = ExtResource("2_c6jfm")
+passive_name = "Overgrown thorns"
+passive_desc = "Thorns cover those who take a defensive position. Whoever dares to attack them will be harmed back"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://ckg57dwhj7eo5"]
+
+[ext_resource type="Texture2D" uid="uid://c3ln38i5c62el" path="res://art/adv_sprites/luc_files.png" id="1_1vbcy"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_3eew5"]
+[ext_resource type="Resource" uid="uid://1d5hu0wkevc8" path="res://archetypes/starters/Warrior/a_warrior.tres" id="1_pvs5m"]
+[ext_resource type="Resource" uid="uid://c2xlkwhpyidre" path="res://archetypes/starters/Warrior/p_warrior.tres" id="2_4owrg"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_c0s70"]
+[ext_resource type="Resource" uid="uid://c6nvnfueteslh" path="res://archetypes/starters/Warrior/warrior_stats.tres" id="4_pvs5m"]
+[ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="7_4owrg"]
+
+[resource]
+script = ExtResource("1_3eew5")
+arch_name = "Warrior"
+arch_desc = "A veteran weapon wielder with many battles to their name"
+portrait = ExtResource("1_1vbcy")
+stats = ExtResource("4_pvs5m")
+passive_ability = ExtResource("2_4owrg")
+active_ability = ExtResource("1_pvs5m")
+weapon = ExtResource("7_4owrg")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

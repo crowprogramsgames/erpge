@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://bftes84o4gqwr"]
+
+[ext_resource type="Script" uid="uid://bwlx8rbmi5kk1" path="res://archetypes/starters/Warden/a_warden.gd" id="1_jg1go"]
+
+[resource]
+script = ExtResource("1_jg1go")
+active_name = "Vine Barrier"
+active_desc = "All allies are granted the \"protected\" status"

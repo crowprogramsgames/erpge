@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://1d5hu0wkevc8"]
+
+[ext_resource type="Script" uid="uid://clp2ubteykji" path="res://archetypes/starters/Warrior/a_warrior.gd" id="1_ouk1h"]
+
+[resource]
+script = ExtResource("1_ouk1h")
+active_name = "Precision Strike"
+active_desc = "One precise attack that destroys any shield and pierces any armor"

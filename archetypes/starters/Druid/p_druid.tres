@@ -1,9 +1,0 @@
-[gd_resource type="Resource" format=3 uid="uid://wqnk4ov8h4yh"]
-
-[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_wtkn4"]
-[ext_resource type="Script" uid="uid://gmws0qse10v6" path="res://archetypes/starters/Druid/p_druid.gd" id="2_h6xot"]
-
-[resource]
-script = ExtResource("2_h6xot")
-passive_name = "Creepy thorns"
-passive_desc = "Thorns cover those who take a defensive position. Whoever dares to attack them will be harmed back"

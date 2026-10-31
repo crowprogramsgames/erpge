@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://dqjgchpjekseo"]
+
+[ext_resource type="Resource" uid="uid://bftes84o4gqwr" path="res://archetypes/starters/Warden/a_warden.tres" id="1_tr1x6"]
+[ext_resource type="Resource" uid="uid://wqnk4ov8h4yh" path="res://archetypes/starters/Warden/p_warden.tres" id="2_a35kf"]
+[ext_resource type="Texture2D" uid="uid://b0o1aj5ipjy2d" path="res://art/adv_sprites/end_files.png" id="3_k6lrn"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="4_vqrcr"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="5_txg0t"]
+[ext_resource type="Resource" uid="uid://cjk75gk15incr" path="res://archetypes/starters/Warden/warden_stats.tres" id="6_1a3xb"]
+[ext_resource type="Resource" uid="uid://b0slrx608lvjt" path="res://items/weapons/club.tres" id="7_uev7b"]
+
+[resource]
+script = ExtResource("4_vqrcr")
+arch_name = "Warden"
+arch_desc = "A guardian of the weak sheltered in the forest"
+portrait = ExtResource("3_k6lrn")
+stats = ExtResource("6_1a3xb")
+passive_ability = ExtResource("2_a35kf")
+active_ability = ExtResource("1_tr1x6")
+weapon = ExtResource("7_uev7b")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"
