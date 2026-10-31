@@ -36,6 +36,7 @@ func _update_crystals(q : int) -> void:
 	curr_crystals = q
 	if curr_crystals > max_crystals:
 		curr_crystals = max_crystals
+	Events.stat_changes.emit()
 func add_crystals(q : int) -> int:
 	if(curr_crystals + q > max_crystals):
 		q = max_crystals - curr_crystals

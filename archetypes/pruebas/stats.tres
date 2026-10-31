@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_r8nvy")
 max_hp = 50
-hp = 25
+hp = 50
+fin = -10
 curr_crystals = 0
 max_crystals = 6
 metadata/_custom_type_script = "uid://dcbe8jtdelre3"

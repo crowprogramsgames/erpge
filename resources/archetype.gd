@@ -9,19 +9,6 @@ extends Resource
 @export_group("Base Stats")
 @export var stats : Stats
 
-@export_group("Ranges")
-@export var pow_range : float = 0.05
-@export var end_range : float = 0.05
-@export var pre_range : float = 0.05
-@export var crit_range : float = 0.05
-
-@export_group("Multipliers")
-@export var crit_mult : float = 0.5
-
-@export_group("Crystals")
-@export var max_crystals : int = 6
-@export var starting_crystals : int = 0
-
 @export_group("Starting Status")
 @export var starting_status : Status = preload("res://statuses/neutral.tres") #class status
 

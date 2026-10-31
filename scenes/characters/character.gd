@@ -10,6 +10,7 @@ const RED_PLATFORM = preload("res://art/adv_sprites/red_platform.png")
 @onready var turn_platform : Sprite2D = $TurnPlatform
 @onready var health_ui : Label = %Health
 @onready var status_ui : Label = %Status
+@onready var crystals_ui : Label = %CrystalsUI
 #UI-MENUS
 @onready var action_menu : CanvasLayer = $ActionMenu
 #MANAGERS
@@ -32,6 +33,7 @@ var weapon : Weapon
 ##FUNCTIONS
 func _ready():
 	Events.stat_changes.connect(_update_stats)
+	action_menu.source = self
 
 #SETTERS
 func _set_character(arch : Archetype) -> void:
@@ -45,7 +47,9 @@ func _set_character(arch : Archetype) -> void:
 	_set_active()
 	_set_weapon()
 	
-func _set_active(): active = archetype.active_ability.duplicate()
+func _set_active(): 
+	active = archetype.active_ability.duplicate()
+	active.source = self
 func _set_passive():
 	passive = archetype.passive_ability.duplicate()
 	passive.set_source(self)
@@ -56,6 +60,7 @@ func _set_stats():
 	status_manager.status = archetype.starting_status.duplicate()
 	
 	health_ui.stats = stats
+	crystals_ui.stats = stats
 	status_ui.status_manager = status_manager
 	
 	_update_stats()
@@ -95,13 +100,14 @@ func targeted_action(target : Character):
 		Action.ActionType.ATTACK:
 			GL.attack(self, target)
 		Action.ActionType.ABILITY:
-			active.a_ability(self, target)
+			active.a_ability(target)
 
 
 #GRANT - UPDATE
 func _update_stats() -> void:
 	health_ui.update_hp()
 	status_ui.update_status()
+	crystals_ui.update_crystals()
 	Events.check_bodies.emit()
 	
 	if stats.hp <= 0 and !status_manager.check_status("dead"):

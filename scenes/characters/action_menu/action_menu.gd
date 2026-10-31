@@ -3,6 +3,8 @@ extends CanvasLayer
 
 @onready var cancelBtn : Button = $CancelButton
 
+var source : Character
+
 func _ready() -> void:
 	Action.set_action(Action.ActionType.NONE, Action.Targets.NONE, Action.Restriction.NONE, false)
 	Events.choose_target.connect(_on_choose_target)
@@ -13,12 +15,12 @@ func _on_skip_button_pressed() -> void:
 func _on_protect_button_pressed() -> void:
 	get_parent().protect_action()
 func _on_active_button_pressed() -> void:
-	var cha = get_parent()
-	var crystals = cha.stats.curr_crystals
-	if crystals >= cha.active.cost:
-		cha.active.active_ability.a_action(get_parent())
+	
+	var crystals = source.stats.curr_crystals
+	if crystals >= source.active.cost:
+		source.active.a_action()
 	else:
-		print("not enough crystals (" + str(crystals) + "/" + str(cha.active_ability.cost) + ")")
+		print("not enough crystals (" + str(crystals) + "/" + str(source.active.cost) + ")")
 func _on_attack_button_pressed() -> void:
 	#Action.set_action(Action.ACTION.ATTACK, Action.SELECTABLE.ENEMY, Action.RESTRICTION.ALIVE)
 	get_parent().attack_action()

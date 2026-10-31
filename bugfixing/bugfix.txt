@@ -1,0 +1,2 @@
+- Al hacer doble click se activa la habilidad del siguiente personaje si
+este tiene suficientes cristales

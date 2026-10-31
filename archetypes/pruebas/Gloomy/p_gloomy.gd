@@ -9,6 +9,6 @@ func _set_modifiers():
 	pass
 
 func _on_attack_missed(origin: Character , target: Character):
-	if target == source:
+	if GL.allies_o_enemies(target, source):
 		origin.stats.lose_health(health_loss)
 	
