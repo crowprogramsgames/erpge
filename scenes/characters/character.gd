@@ -77,6 +77,7 @@ func character_turn():
 	if status_manager.status.can_act: action_setup()
 	else: end_of_turn()
 func start_of_turn():
+	Events.start_of_turn.emit(self)
 	effect_countdown(stats.cd_per_turn)
 	stats.add_crystals(stats.cry_per_turn)
 func action_setup(): action_menu.show()
@@ -107,6 +108,8 @@ func targeted_action(targets : Array[Character]):
 #GRANT - UPDATE
 func _update_stats() -> void:
 	health_ui.update_hp()
+	if status_manager.status.duration <= 0 && status_manager.status.can_expire:
+		status_manager.expire_status()
 	status_ui.update_status()
 	crystals_ui.update_crystals()
 	Events.check_bodies.emit()
@@ -118,8 +121,7 @@ func _update_stats() -> void:
 func effect_countdown(q : int):
 	var dur = status_manager.status.change_duration(-q)
 	if(dur <= 0):
-		status_manager.grant_status("neutral")
-	
+		status_manager.expire_status()
 	var effect_duration : int
 	for effect in effect_manager.man_list:
 		effect_duration = effect.change_duration(-q)
@@ -134,6 +136,10 @@ func add_initiative(start : bool) -> void:
 	if start:
 		base_ini = GL.roll20()
 	stats.initiative += base_ini - tot_stat("ref") + tot_stat("ini")
+func get_attacked() -> bool:
+	return self.status_manager.status.get_attacked()
+func heal(hp_restored : int):
+	stats.heal(hp_restored)
 #INPUT-EVENTS
 func _on_mouse_entered() -> void:
 	arrow.show()

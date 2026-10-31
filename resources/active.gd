@@ -1,4 +1,4 @@
-@abstract class_name Active
+class_name Active
 extends Resource
 
 enum Save {NONE, PWR, END, FIN, REF, VIR}
@@ -12,9 +12,11 @@ var source : Character
 @export var save_difficulty : int = 12
 @export var save_stat : Save = Save.NONE
 
-@abstract func a_action() -> void
+func a_action() -> void:
+	pass
 
-@abstract func a_ability(targets: Array[Character]) -> void
+func a_ability(targets: Array[Character]) -> void:
+	pass
 
 func _pay_cost():
 	source.stats.curr_crystals -= cost

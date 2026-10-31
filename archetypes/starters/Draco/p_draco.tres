@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://yrv33dc0tejl"]
+
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_4mowp"]
+[ext_resource type="Script" uid="uid://b5metfqby4n68" path="res://archetypes/starters/Draco/p_draco.gd" id="2_4mowp"]
+
+[resource]
+script = ExtResource("2_4mowp")
+passive_name = "Draconic Presence"
+passive_desc = "At the start of combat, the enemies are left astonished by the grandiose"
+metadata/_custom_type_script = "uid://dmlaesjve55vy"

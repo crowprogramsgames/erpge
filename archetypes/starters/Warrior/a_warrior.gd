@@ -27,5 +27,5 @@ func a_ability(targets: Array[Character]) -> void:
 				target.be_dealt_dmg(dmg)
 				if(dmg > 0):
 					Events.attack_hit.emit(source, target)
-		
+	_pay_cost()
 	source.end_of_turn()

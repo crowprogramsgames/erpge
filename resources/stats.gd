@@ -78,5 +78,12 @@ func dmg_multiplier(o:Character , t: Character):
 func lose_health(quant : int):
 	hp -= quant
 	Events.stat_changes.emit()
+func heal(quant : int):
+	var prev : int = hp
+	if quant > max_hp - hp:
+		quant = max_hp - hp
+	hp += quant
+	print(self.char_name + " has been healed for " + str(quant) + " (" + str(prev) + " -> " + str(hp) + ")")
+	Events.stat_changes.emit()
 func additional_damage(o:Character, t:Character):
 	return add_dmg

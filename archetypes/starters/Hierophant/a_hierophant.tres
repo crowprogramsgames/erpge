@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://oegymnnc88y5"]
+
+[ext_resource type="Script" uid="uid://byj6naq7oqg77" path="res://archetypes/starters/Hierophant/a_hierophant.gd" id="1_t07s4"]
+
+[resource]
+script = ExtResource("1_t07s4")
+active_name = "Lesser Miracle"
+active_desc = "An adventurer is granted the \"healiang\" status and is healed equal to your power"
+cost = 2
+metadata/_custom_type_script = "uid://b7d6rex4qpujm"

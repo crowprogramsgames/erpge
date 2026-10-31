@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://d4ngajoktvimn"]
+
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_dyhfw"]
+[ext_resource type="Resource" uid="uid://oegymnnc88y5" path="res://archetypes/starters/Hierophant/a_hierophant.tres" id="1_fghwx"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_plove"]
+[ext_resource type="Resource" uid="uid://c0gj73bswo3ab" path="res://archetypes/starters/Hierophant/p_hierophant.tres" id="2_so0ia"]
+[ext_resource type="Texture2D" uid="uid://c6yd2nl6y47y1" path="res://art/adv_sprites/spe_files.png" id="3_owpb5"]
+[ext_resource type="Resource" uid="uid://bfujk0jtc0m5k" path="res://archetypes/starters/Hierophant/hierophant_stats.tres" id="6_24dfj"]
+[ext_resource type="Resource" uid="uid://dikttp0c5guvg" path="res://items/weapons/flail.tres" id="7_sr0ur"]
+
+[resource]
+script = ExtResource("1_dyhfw")
+arch_name = "Hierophant"
+arch_desc = "A holy person with devilish intentions"
+portrait = ExtResource("3_owpb5")
+stats = ExtResource("6_24dfj")
+passive_ability = ExtResource("2_so0ia")
+active_ability = ExtResource("1_fghwx")
+weapon = ExtResource("7_sr0ur")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

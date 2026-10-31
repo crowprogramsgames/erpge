@@ -5,11 +5,11 @@ extends Node2D
 @onready var background : ColorRect = $Background
 @onready var darkBg : ColorRect = $DarkBg
 
-@onready var redTeam : Array[Node]
-@onready var blueTeam : Array[Node]
-@onready var adventurers : Array[Node]
+static var redTeam : Array[Node]
+static var blueTeam : Array[Node]
+static var adventurers : Array[Node]
 
-var curr : Character
+static var curr : Character
 
 
 func _ready():

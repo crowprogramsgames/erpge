@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://c0gj73bswo3ab"]
+
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_ei2vi"]
+[ext_resource type="Script" uid="uid://p6caxk1evnc3" path="res://archetypes/starters/Hierophant/p_hierophant.gd" id="2_ei2vi"]
+
+[resource]
+script = ExtResource("2_ei2vi")
+passive_name = "Holy Knight"
+passive_desc = "On attack hit, they are granted \"shielded\" condition"
+metadata/_custom_type_script = "uid://dmlaesjve55vy"

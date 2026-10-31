@@ -21,9 +21,10 @@ func attack(origin : Character, targets : Array[Character]) -> void:
 		hit_mult = hit_data[0]
 		pre_bonus = hit_data[1]
 		
-		if hit_mult == -1:
+		if hit_mult == -1 || !target.get_attacked():
 			pass
 		else:
+			 #char.can_be_attacked // before_attacked
 			var dmg : int = atk_damage(pre_bonus, hit_mult, origin, target)
 			print(origin.stats.char_name + " has dealt " + str(dmg) + " damage to " + target.stats.char_name)
 			target.be_dealt_dmg(dmg)
@@ -60,10 +61,16 @@ func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 
 func atk_damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
 	var WD : int = o.weapon.weapon_dmg + o.additional_damage(o,t)
-	var dmg : int = int(floor(WD * (1 + o.tot_stat("pwr") * o.tot_stat("pwr_rng") + pre_b * o.tot_stat("pre_rng") - t.tot_stat("end") * t.tot_stat("end_rng")) * (1 + hit_mult) * (dmg_multiplier(o,t))))
+	var dmg : int = int(floor(WD * (1 + o.tot_stat("pwr") * o.tot_stat("pwr_rng") 
+	+ pre_b * o.tot_stat("pre_rng") 
+	- t.tot_stat("end") * t.tot_stat("end_rng")) 
+	* (1 + hit_mult) * (dmg_multiplier(o,t))))
 
 	return max(1, dmg)
-
+func ab_damage(o: Character , t: Character, hab_dmg : float) -> int:
+	var dmg : int = int(floor(hab_dmg * (1 - t.tot_stat("end") * t.tot_stat("end_rng")) 
+	* (dmg_multiplier(o,t))))
+	return max(1,dmg)
 func dmg_multiplier(o : Character,t : Character) -> float:
 	return o.dmg_multiplier(o,t) * t.dmg_multiplier(o,t)
 

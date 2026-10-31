@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://jjq82fdu667h"]
+
+[ext_resource type="Script" uid="uid://c8a86gfn75x7h" path="res://archetypes/starters/Draco/a_draco.gd" id="1_dngjp"]
+
+[resource]
+script = ExtResource("1_dngjp")
+active_name = "Dragon Breath"
+active_desc = "All enemies are engulfed in flames"
+metadata/_custom_type_script = "uid://b7d6rex4qpujm"

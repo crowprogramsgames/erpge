@@ -11,6 +11,7 @@ signal stat_changes
 signal target_selected(target : Character)
 signal end_turn
 signal choose_target
+signal get_attacked(origin : Character, target: Character)
 #INFORMATION-BLOCK
 signal call_info(cha : Character)
 signal close_info
@@ -27,6 +28,7 @@ signal pause_mod(mod : Modifier)
 #PASSIVE-TRIGGERS
 #Turn
 signal start_of_game
+signal start_of_turn(origin : Character)
 
 #Attacks
 signal attack_hit(o : Character, t : Character)

@@ -13,11 +13,15 @@ const HASTED : Status = preload("res://statuses/hasted.tres")
 const NEUTRAL : Status = preload("res://statuses/neutral.tres")
 const PROTECTED : Status = preload("res://statuses/protected.tres")
 const WEAKENED : Status = preload("res://statuses/weakened.tres")
+const SHIELDED : Status = preload("res://statuses/shielded.tres")
+const HEALING : Status = preload("res://statuses/healing.tres")
+
 
 static var status_list : Array[Status] = [
 	BLESSED, BLINDED, CURSED, DEAD,
 	 ENRAGED, FOCUSED, FRAGILE, FROZEN,
-	HASTED, NEUTRAL, PROTECTED, WEAKENED
+	HASTED, NEUTRAL, PROTECTED, WEAKENED,
+	SHIELDED, HEALING
 ]
 var status : Status
 
@@ -45,12 +49,14 @@ static func find_status(status_n : StringName) -> Status:
 
 static func can_be_granted(status_n : StringName) -> Status:
 	return find_status(status_n)
-
+func expire_status():
+	grant_status("neutral")
 func grant_status(status_n : StringName):
 	var found_status = StatusManager.can_be_granted(status_n)
 	
 	if found_status != null:
 		status = found_status.duplicate()
+		status.set_up_status()
 		Events.stat_changes.emit()
 func check_status(status_n : StringName) -> bool:
 	return status_n.capitalize() == self.status.effect_name.capitalize()

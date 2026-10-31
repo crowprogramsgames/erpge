@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://gryithbqcjey"]
+
+[ext_resource type="Resource" uid="uid://jjq82fdu667h" path="res://archetypes/starters/Draco/a_draco.tres" id="1_wl3vh"]
+[ext_resource type="Resource" uid="uid://yrv33dc0tejl" path="res://archetypes/starters/Draco/p_draco.tres" id="2_fugwh"]
+[ext_resource type="Texture2D" uid="uid://cnule6p8qxdrr" path="res://art/adv_sprites/ang_files.png" id="3_7cf3i"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="4_580kv"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="5_vvym6"]
+[ext_resource type="Resource" uid="uid://bhe77agxjwbv5" path="res://archetypes/starters/Draco/draco_stats.tres" id="6_31107"]
+[ext_resource type="Resource" uid="uid://bpemd6y4tvnkm" path="res://items/weapons/claws.tres" id="7_fv8iw"]
+
+[resource]
+script = ExtResource("4_580kv")
+arch_name = "Draco"
+arch_desc = "A furious dragon spawn heats their inside in preparation"
+portrait = ExtResource("3_7cf3i")
+stats = ExtResource("6_31107")
+passive_ability = ExtResource("2_fugwh")
+active_ability = ExtResource("1_wl3vh")
+weapon = ExtResource("7_fv8iw")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"
