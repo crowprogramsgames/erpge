@@ -24,7 +24,7 @@ func attack(origin : Character, targets : Array[Character]) -> void:
 		if hit_mult == -1:
 			pass
 		else:
-			var dmg : int = damage(pre_bonus, hit_mult, origin, target)
+			var dmg : int = atk_damage(pre_bonus, hit_mult, origin, target)
 			print(origin.stats.char_name + " has dealt " + str(dmg) + " damage to " + target.stats.char_name)
 			target.be_dealt_dmg(dmg)
 			if(dmg > 0):
@@ -58,11 +58,14 @@ func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 	
 	return [hit_mult, pre_bonus]
 
-func damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
+func atk_damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
 	var WD : int = o.weapon.weapon_dmg
-	var dmg : int = int(floor(WD * (1 + o.tot_stat("pwr") * o.tot_stat("pwr_rng") + pre_b * o.tot_stat("pre_rng") - t.tot_stat("end") * t.tot_stat("end_rng")) * (1 + hit_mult)))
+	var dmg : int = int(floor(WD * (1 + o.tot_stat("pwr") * o.tot_stat("pwr_rng") + pre_b * o.tot_stat("pre_rng") - t.tot_stat("end") * t.tot_stat("end_rng")) * (1 + hit_mult) * (dmg_multiplier(o,t))))
 
 	return max(1, dmg)
+
+func dmg_multiplier(o : Character,t : Character) -> float:
+	return o.dmg_multiplier(o,t) * t.dmg_multiplier(o,t)
 
 func allies_o_enemies(origin : Character, target: Character) -> bool:
 	return origin.is_in_group("blue_team") == target.is_in_group("blue_team")

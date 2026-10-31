@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://c3chavhu8p7fk"]
+
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_0l72g"]
+[ext_resource type="Resource" uid="uid://t68gaogj8bq7" path="res://archetypes/starters/Brute/brute_mod_1.tres" id="2_67ilt"]
+[ext_resource type="Script" uid="uid://dkwjggtcmysvx" path="res://archetypes/starters/Brute/p_brute.gd" id="2_vmbx8"]
+
+[resource]
+script = ExtResource("2_vmbx8")
+mod_list = Array[ExtResource("1_0l72g")]([ExtResource("2_67ilt")])

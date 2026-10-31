@@ -149,3 +149,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 func tot_stat(stat : String) -> float:
 	
 	return stats.tot_stat(stat) + status_manager.tot_stat(stat)+ effect_manager.tot_stat(stat) + modifier_manager.tot_stat(stat)
+func dmg_multiplier(o: Character , t:Character) -> float:
+	return stats.dmg_multiplier(o,t) * status_manager.dmg_multiplier(o,t) * effect_manager.dmg_multiplier(o,t) * modifier_manager.dmg_multiplier(o,t)

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" format=3 uid="uid://bywadcf7iryrx"]
+
+[ext_resource type="Script" uid="uid://b4fmugel5id6v" path="res://archetypes/starters/Brute/a_brute.gd" id="1_5god0"]
+
+[resource]
+script = ExtResource("1_5god0")

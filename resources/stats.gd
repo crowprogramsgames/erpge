@@ -13,7 +13,7 @@ extends Resource
 @export_group("Hit Multiplier")
 @export var hit_mult : float = 0
 @export var crit_mult : float = 0.5
-
+@export var dmg_mult : float = 1
 @export_group("Ranges")
 @export var pwr_range : float = 0.05
 @export var pre_range : float = 0.05
@@ -70,7 +70,8 @@ func tot_stat(type : String) -> float:
 			return pre_range
 		_:
 			return 0
-
+func dmg_multiplier(o:Character , t: Character):
+	return dmg_mult
 func lose_health(quant : int):
 	hp -= quant
 	Events.stat_changes.emit()

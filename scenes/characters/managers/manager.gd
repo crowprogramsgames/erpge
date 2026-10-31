@@ -51,3 +51,8 @@ func tot_stat(type : String) -> float:
 		_:
 			return 0
 	return total
+func dmg_multiplier(o: Character, t:Character) -> float:
+	var total : float = 1
+	for effect in man_list:
+		total *= effect.dmg_multiplier(o,t)
+	return total

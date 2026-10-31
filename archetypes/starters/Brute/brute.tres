@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://db452s7ngm83b"]
+
+[ext_resource type="Resource" uid="uid://bywadcf7iryrx" path="res://archetypes/starters/Brute/a_brute.tres" id="1_7ajt8"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_derec"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_74lqo"]
+[ext_resource type="Resource" uid="uid://c3chavhu8p7fk" path="res://archetypes/starters/Brute/p_brute.tres" id="2_wso6w"]
+[ext_resource type="Texture2D" uid="uid://cja7topw1v7pj" path="res://art/adv_sprites/fan_files.png" id="3_wso6w"]
+[ext_resource type="Resource" uid="uid://gv8f2foy1opa" path="res://archetypes/starters/Brute/brute_stats.tres" id="5_55boq"]
+[ext_resource type="Resource" uid="uid://mkxd683lmoes" path="res://items/weapons/battleaxe.tres" id="7_wso6w"]
+
+[resource]
+script = ExtResource("1_derec")
+arch_name = "Brute"
+arch_desc = "Raised by war, taught in blood, fear its presence"
+portrait = ExtResource("3_wso6w")
+stats = ExtResource("5_55boq")
+passive_ability = ExtResource("2_wso6w")
+active_ability = ExtResource("1_7ajt8")
+weapon = ExtResource("7_wso6w")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

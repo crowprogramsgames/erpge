@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://t68gaogj8bq7"]
+
+[ext_resource type="Script" uid="uid://dvq854fsjtqny" path="res://archetypes/starters/Brute/brute_mod_1.gd" id="1_pb40f"]
+
+[resource]
+script = ExtResource("1_pb40f")
+mod_type = 1
+affected = 2
+dmg_mult = 0.5
+metadata/_custom_type_script = "uid://df27rfrtjx2ou"

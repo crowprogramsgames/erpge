@@ -23,6 +23,20 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 Events="*uid://35wcg7jh5ph6"
 GL="*uid://dxgskk1ab4x85"
 
+[file_customization]
+
+folder_colors={
+"res://archetypes/": "yellow",
+"res://art/": "teal",
+"res://bugfixing/": "gray",
+"res://globals/": "green",
+"res://items/": "orange",
+"res://resources/": "purple",
+"res://scenes/": "red",
+"res://statuses/": "pink",
+"res://template/": "gray"
+}
+
 [input]
 
 left_click={

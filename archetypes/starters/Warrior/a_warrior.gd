@@ -22,7 +22,7 @@ func a_ability(targets: Array[Character]) -> void:
 			if hit_mult == -1:
 				pass
 			else:
-				var dmg : int = GL.damage(pre_bonus, hit_mult, source, target)
+				var dmg : int = GL.atk_damage(pre_bonus, hit_mult, source, target)
 				print(source.stats.char_name + " has dealt " + str(dmg) + " damage to " + target.stats.char_name)
 				target.be_dealt_dmg(dmg)
 				if(dmg > 0):

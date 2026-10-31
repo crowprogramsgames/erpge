@@ -35,7 +35,8 @@ func tot_stat(type : String) -> float:
 			return status.t_vir
 		_:
 			return 0
-
+func dmg_multiplier(o: Character, t:Character) -> float:
+	return status.dmg_multiplier(o,t)
 static func find_status(status_n : StringName) -> Status:
 	for st in status_list:
 		if st.effect_name.capitalize() == status_n.capitalize():
