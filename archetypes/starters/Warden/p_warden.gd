@@ -2,8 +2,7 @@ extends Passive
 
 @export var health_loss : int = 6
 
-func _set_modifiers():
-	pass
+
 func _set_triggers():
 	Events.attack_hit.connect(_on_attack_hit)
 

@@ -56,3 +56,8 @@ func dmg_multiplier(o: Character, t:Character) -> float:
 	for effect in man_list:
 		total *= effect.dmg_multiplier(o,t)
 	return total
+func additional_damage(o : Character, t:Character) -> int:
+	var total : int = 0
+	for effect in man_list:
+		total += effect.additional_damage(o,t)
+	return total

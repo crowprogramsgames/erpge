@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://bd464ht2ksx0p"]
+
+[ext_resource type="Script" uid="uid://csiqg3bctj7ka" path="res://resources/weapon.gd" id="1_253gx"]
+
+[resource]
+script = ExtResource("1_253gx")
+weapon_name = &"Dagger"
+weapon_dmg = 6
+metadata/_custom_type_script = "uid://csiqg3bctj7ka"

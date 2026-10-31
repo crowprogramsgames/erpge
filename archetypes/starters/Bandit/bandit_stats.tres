@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stats" format=3 uid="uid://b7im40r0mglt8"]
+
+[ext_resource type="Script" uid="uid://dcbe8jtdelre3" path="res://resources/stats.gd" id="1_ws6lx"]
+
+[resource]
+script = ExtResource("1_ws6lx")
+max_hp = 60
+hp = 60
+pwr = -1
+fin = 4
+ref = 3
+vir = 1
+metadata/_custom_type_script = "uid://dcbe8jtdelre3"

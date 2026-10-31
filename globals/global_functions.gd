@@ -59,7 +59,7 @@ func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 	return [hit_mult, pre_bonus]
 
 func atk_damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
-	var WD : int = o.weapon.weapon_dmg
+	var WD : int = o.weapon.weapon_dmg + o.additional_damage(o,t)
 	var dmg : int = int(floor(WD * (1 + o.tot_stat("pwr") * o.tot_stat("pwr_rng") + pre_b * o.tot_stat("pre_rng") - t.tot_stat("end") * t.tot_stat("end_rng")) * (1 + hit_mult) * (dmg_multiplier(o,t))))
 
 	return max(1, dmg)

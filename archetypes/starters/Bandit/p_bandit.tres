@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://btciiv1vpg2xw"]
+
+[ext_resource type="Script" uid="uid://df27rfrtjx2ou" path="res://resources/modifier.gd" id="1_xaalr"]
+[ext_resource type="Resource" uid="uid://dwf4wr6wmmnrr" path="res://archetypes/starters/Bandit/bandit_mod_1.tres" id="2_dvpge"]
+[ext_resource type="Script" uid="uid://62y56gvl6yyi" path="res://archetypes/starters/Bandit/p_bandit.gd" id="2_r1ibj"]
+
+[resource]
+script = ExtResource("2_r1ibj")
+mod_list = Array[ExtResource("1_xaalr")]([ExtResource("2_dvpge")])

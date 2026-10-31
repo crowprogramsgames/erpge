@@ -146,8 +146,9 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		Events.target_selected.emit(self)
 
 #TSTATS
+func additional_damage(o: Character, t:Character) -> int:
+	return stats.additional_damage(o,t) + status_manager.additional_damage(o,t) + effect_manager.additional_damage(o,t) + modifier_manager.additional_damage(o,t)
 func tot_stat(stat : String) -> float:
-	
 	return stats.tot_stat(stat) + status_manager.tot_stat(stat)+ effect_manager.tot_stat(stat) + modifier_manager.tot_stat(stat)
 func dmg_multiplier(o: Character , t:Character) -> float:
 	return stats.dmg_multiplier(o,t) * status_manager.dmg_multiplier(o,t) * effect_manager.dmg_multiplier(o,t) * modifier_manager.dmg_multiplier(o,t)

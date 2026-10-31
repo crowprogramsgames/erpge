@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://bq2uugb4jhrs6"]
+
+[ext_resource type="Script" uid="uid://he7d24oq5cso" path="res://archetypes/starters/Bandit/a_bandit.gd" id="1_5bhkl"]
+
+[resource]
+script = ExtResource("1_5bhkl")
+active_name = "Dirty Tactics"
+active_desc = "A cloud of dust fills the air and the lungs of those who gasp in surprise and the eyes of those who witness"
+save_stat = 4

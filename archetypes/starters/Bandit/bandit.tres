@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://c1hov7sixvacj"]
+
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_cw3cq"]
+[ext_resource type="Resource" uid="uid://bq2uugb4jhrs6" path="res://archetypes/starters/Bandit/a_bandit.tres" id="1_r4ndh"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_7nct1"]
+[ext_resource type="Resource" uid="uid://btciiv1vpg2xw" path="res://archetypes/starters/Bandit/p_bandit.tres" id="2_qf3xu"]
+[ext_resource type="Texture2D" uid="uid://b66nxgwulukxi" path="res://art/adv_sprites/icy_files.png" id="3_gn0vl"]
+[ext_resource type="Resource" uid="uid://b7im40r0mglt8" path="res://archetypes/starters/Bandit/bandit_stats.tres" id="6_pfqr3"]
+[ext_resource type="Resource" uid="uid://bd464ht2ksx0p" path="res://items/weapons/dagger.tres" id="7_r4ndh"]
+
+[resource]
+script = ExtResource("1_cw3cq")
+arch_name = "Bandit"
+arch_desc = "A rascal from the shadows of the city comes to steal the show"
+portrait = ExtResource("3_gn0vl")
+stats = ExtResource("6_pfqr3")
+passive_ability = ExtResource("2_qf3xu")
+active_ability = ExtResource("1_r4ndh")
+weapon = ExtResource("7_r4ndh")
+metadata/_custom_type_script = "uid://qoe7jgamtuc7"

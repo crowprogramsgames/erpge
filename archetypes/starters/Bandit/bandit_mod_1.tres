@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://dwf4wr6wmmnrr"]
+
+[ext_resource type="Script" uid="uid://dc73qmkshcm3d" path="res://archetypes/starters/Bandit/bandit_mod_1.gd" id="1_12i1a"]
+
+[resource]
+script = ExtResource("1_12i1a")
+mod_type = 2
+effect_name = "Surprise Attack"
+effect_desc = "Raises damage if finesse is higher than the target"
+metadata/_custom_type_script = "uid://df27rfrtjx2ou"

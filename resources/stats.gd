@@ -10,10 +10,13 @@ extends Resource
 @export var ref : int
 @export var vir : int
 
+var add_dmg : int = 0
+
 @export_group("Hit Multiplier")
 @export var hit_mult : float = 0
 @export var crit_mult : float = 0.5
 @export var dmg_mult : float = 1
+
 @export_group("Ranges")
 @export var pwr_range : float = 0.05
 @export var pre_range : float = 0.05
@@ -75,3 +78,5 @@ func dmg_multiplier(o:Character , t: Character):
 func lose_health(quant : int):
 	hp -= quant
 	Events.stat_changes.emit()
+func additional_damage(o:Character, t:Character):
+	return add_dmg

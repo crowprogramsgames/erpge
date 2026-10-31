@@ -4,3 +4,4 @@
 
 [resource]
 script = ExtResource("1_5god0")
+save_stat = 2

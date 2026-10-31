@@ -1,4 +1,4 @@
-@abstract class_name Passive
+class_name Passive
 extends Resource
 
 @export var passive_name : String = ""
@@ -15,5 +15,11 @@ func set_source(src : Character):
 func set_up_mods():
 	_set_modifiers()
 	_set_triggers()
-@abstract func _set_modifiers()
-@abstract func _set_triggers()
+
+func _set_modifiers():
+	var new_mod : Modifier
+	for mod in mod_list:
+		new_mod = mod.duplicate()
+		new_mod.attach_mod(source)
+func _set_triggers():
+	pass

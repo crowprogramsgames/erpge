@@ -33,6 +33,8 @@ extends Resource
 @export_group("MULTIPLIERS")
 @export var crit_mult : float = 0
 @export var dmg_mult : float = 1
+
+var add_dmg : int = 0
 var source : Character
 
 #@export_group("Effect Trigger")
@@ -96,5 +98,7 @@ func crit_multiplier() -> float:
 	return crit_mult
 func dmg_multiplier(o:Character, t:Character) -> float:
 	return dmg_mult
+func additional_damage(o:Character, t:Character) -> int:
+	return add_dmg
 func save_val() -> float:
 	return save_stat
