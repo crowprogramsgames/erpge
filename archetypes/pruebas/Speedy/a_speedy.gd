@@ -1,7 +1,7 @@
 extends Active
 
 func a_action() -> void:
-	Action.set_action(Action.ActionType.ABILITY, Action.Targets.ALL, Action.Restriction.ALIVE, false)
+	Action.set_action(Action.ActionType.ABILITY, Action.Targets.ALL, Action.Restriction.TARGET, true)
 	source.action_menu.cancelBtn.show()
 	Events.choose_target.emit()
 

@@ -11,9 +11,9 @@ func _ready() -> void:
 
 #BUTTON PRESSED
 func _on_skip_button_pressed() -> void:
-	get_parent().skip_action()
+	source.skip_action()
 func _on_protect_button_pressed() -> void:
-	get_parent().protect_action()
+	source.protect_action()
 func _on_active_button_pressed() -> void:
 	
 	var crystals = source.stats.curr_crystals
@@ -22,8 +22,8 @@ func _on_active_button_pressed() -> void:
 	else:
 		print("not enough crystals (" + str(crystals) + "/" + str(source.active.cost) + ")")
 func _on_attack_button_pressed() -> void:
-	#Action.set_action(Action.ACTION.ATTACK, Action.SELECTABLE.ENEMY, Action.RESTRICTION.ALIVE)
-	get_parent().attack_action()
+	#Action.set_action(Action.ACTION.ATTACK, Action.SELECTABLE.ENEMY, Action.RESTRICTION.TARGET)
+	source.attack_action()
 func _on_cancel_button_pressed() -> void:
 	Action.set_action(Action.ActionType.NONE, Action.Targets.NONE, Action.Restriction.NONE, false)
 	cancelBtn.hide()

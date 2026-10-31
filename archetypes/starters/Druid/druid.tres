@@ -1,9 +1,20 @@
-[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://c380fio7houlm"]
+[gd_resource type="Resource" script_class="Archetype" format=3 uid="uid://dqjgchpjekseo"]
 
-[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_3xh3j"]
-[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_67p0i"]
-[ext_resource type="Resource" uid="uid://7jgep15af5f0" path="res://items/weapons/unnarmed.tres" id="3_kpbgi"]
+[ext_resource type="Resource" uid="uid://bftes84o4gqwr" path="res://archetypes/starters/Druid/a_druid.tres" id="1_3u4nk"]
+[ext_resource type="Resource" uid="uid://wqnk4ov8h4yh" path="res://archetypes/starters/Druid/p_druid.tres" id="2_44v22"]
+[ext_resource type="Texture2D" uid="uid://b0o1aj5ipjy2d" path="res://art/adv_sprites/end_files.png" id="3_erv30"]
+[ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="4_0n2sj"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="5_e4a2v"]
+[ext_resource type="Resource" uid="uid://cjk75gk15incr" path="res://archetypes/starters/Druid/druid_stats.tres" id="6_cs42n"]
+[ext_resource type="Resource" uid="uid://b0slrx608lvjt" path="res://items/weapons/club.tres" id="7_quhw2"]
 
 [resource]
-script = ExtResource("1_3xh3j")
+script = ExtResource("4_0n2sj")
+arch_name = "Druid"
+arch_desc = "The bark of the trees will protect us"
+portrait = ExtResource("3_erv30")
+stats = ExtResource("6_cs42n")
+passive_ability = ExtResource("2_44v22")
+active_ability = ExtResource("1_3u4nk")
+weapon = ExtResource("7_quhw2")
 metadata/_custom_type_script = "uid://qoe7jgamtuc7"

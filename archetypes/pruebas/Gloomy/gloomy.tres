@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="1_8w84j"]
 [ext_resource type="Resource" uid="uid://c84vx1e0aqurk" path="res://archetypes/pruebas/Gloomy/a_gloomy.tres" id="1_mhdjl"]
+[ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="2_hevl0"]
 [ext_resource type="Resource" uid="uid://bpgqfr3eaceys" path="res://archetypes/pruebas/Gloomy/p_gloomy.tres" id="2_i4fvr"]
 [ext_resource type="Texture2D" uid="uid://d4muh2u6m6ceq" path="res://art/adv_sprites/glo_files.png" id="3_i4fvr"]
 [ext_resource type="Resource" uid="uid://c40gkn1pwomot" path="res://archetypes/pruebas/stats.tres" id="5_i4fvr"]

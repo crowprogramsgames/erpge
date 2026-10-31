@@ -14,14 +14,16 @@ extends Resource
 @export var can_expire: bool = true
 @export var defeat: bool = false
 
-@export_group("TSTATS")
+@export_group("STATS")
 @export var t_pow : int = 0
 @export var t_end : int = 0
 @export var t_fin : int = 0
 @export var t_ref : int = 0
 @export var t_vir : int = 0
 @export var t_ini : int = 0
+@export var save_stat: int = 0
 @export var duration : int = 3
+
 @export_group("RANGES")
 @export var pwr_rng : float = 0
 @export var pre_rng : float = 0
@@ -91,3 +93,5 @@ func end_range() -> float:
 	return end_rng
 func crit_multiplier() -> float:
 	return crit_mult
+func save_val() -> float:
+	return save_stat

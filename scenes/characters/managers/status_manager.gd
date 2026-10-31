@@ -21,7 +21,7 @@ static var status_list : Array[Status] = [
 ]
 var status : Status
 
-func tot_stat(type : String):
+func tot_stat(type : String) -> float:
 	match type:
 		"pwr":
 			return status.t_pow

@@ -10,21 +10,26 @@ func roll20():
 	return rng.randi()%20+1
 
 #ATTACK
-func attack(origin : Character, target : Character) -> void:
+func attack(origin : Character, targets : Array[Character]) -> void:
 	var roll = roll20()
-	var hit_data : Array[float] = hit(roll, origin, target)
-	var hit_mult : float = hit_data[0]
-	var pre_bonus : float = hit_data[1]
+	var hit_data : Array[float]
+	var hit_mult : float
+	var pre_bonus : float 
 	
-	if hit_mult == -1:
-		pass
-	else:
-		var dmg : int = damage(pre_bonus, hit_mult, origin, target)
-		print(origin.stats.char_name + " has dealt " + str(dmg) + " damage to " + target.stats.char_name)
-		target.be_dealt_dmg(dmg)
-		if(dmg > 0):
-			Events.attack_hit.emit(origin, target)
-	
+	for target in targets:
+		hit_data  = hit(roll, origin, target)
+		hit_mult = hit_data[0]
+		pre_bonus = hit_data[1]
+		
+		if hit_mult == -1:
+			pass
+		else:
+			var dmg : int = damage(pre_bonus, hit_mult, origin, target)
+			print(origin.stats.char_name + " has dealt " + str(dmg) + " damage to " + target.stats.char_name)
+			target.be_dealt_dmg(dmg)
+			if(dmg > 0):
+				Events.attack_hit.emit(origin, target)
+		
 	origin.end_of_turn()
 	
 func hit(roll: int, origin : Character, target : Character) -> Array[float]:
@@ -43,7 +48,6 @@ func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 		hit_state = AttackResult.CRIT_MISS
 	elif roll >= min(20, 20 - origin.tot_stat("vir")):
 		hit_mult += origin.tot_stat("crit_mult") + origin.tot_stat("vir") * origin.tot_stat("cri_rng") 
-		
 		hit_state = AttackResult.CRIT_HIT
 	elif(diff < 0):
 		hit_state = AttackResult.MISS
@@ -56,12 +60,8 @@ func hit(roll: int, origin : Character, target : Character) -> Array[float]:
 
 func damage(pre_b : int, hit_mult : float, o: Character , t : Character) -> int:
 	var WD : int = o.weapon.weapon_dmg
-	var dmg : int = floor(WD * (1 
-	+ o.tot_stat("pwr") * o.tot_stat("pwr_rng") 
-	+ pre_b * o.tot_stat("pre_rng") 
-	- t.tot_stat("end") * t.tot_stat("end_rng"))
-	* (1 + hit_mult))
-	
+	var dmg : int = int(floor(WD * (1 + o.tot_stat("pwr") * o.tot_stat("pwr_rng") + pre_b * o.tot_stat("pre_rng") - t.tot_stat("end") * t.tot_stat("end_rng")) * (1 + hit_mult)))
+
 	return max(1, dmg)
 
 func allies_o_enemies(origin : Character, target: Character) -> bool:

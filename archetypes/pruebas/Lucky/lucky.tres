@@ -12,7 +12,6 @@
 script = ExtResource("1_jux03")
 portrait = ExtResource("3_ang20")
 stats = ExtResource("6_65kgs")
-crit_mult = 2.0
 passive_ability = ExtResource("2_ang20")
 active_ability = ExtResource("1_a8qwn")
 weapon = ExtResource("5_65kgs")

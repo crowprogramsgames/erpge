@@ -21,8 +21,8 @@ extends Resource
 @export var crit_range : float = 0.05
 
 @export_group("Crystals")
-@export var curr_crystals : int = 6
-@export var max_crystals : int = 0
+@export var curr_crystals : int = 0
+@export var max_crystals : int = 6
 
 var cd_per_turn = 1
 var cry_per_turn = 1

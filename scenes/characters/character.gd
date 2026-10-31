@@ -92,15 +92,16 @@ func protect_action():
 	status_manager.grant_status("protected")
 	end_of_turn()
 func attack_action():
-	Action.set_action(Action.ActionType.ATTACK, Action.Targets.ENEMY, Action.Restriction.ALIVE, true)
+	Action.set_action(Action.ActionType.ATTACK, Action.Targets.ENEMY, Action.Restriction.TARGET, true)
 	action_menu.cancelBtn.show()
 	Events.choose_target.emit()
-func targeted_action(target : Character):
+func targeted_action(targets : Array[Character]):
 	match Action.actiontype:
 		Action.ActionType.ATTACK:
-			GL.attack(self, target)
+			GL.attack(self, targets)
 		Action.ActionType.ABILITY:
-			active.a_ability(target)
+			active.a_ability(targets)
+	
 
 
 #GRANT - UPDATE
@@ -146,4 +147,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 #TSTATS
 func tot_stat(stat : String) -> float:
+	
 	return stats.tot_stat(stat) + status_manager.tot_stat(stat)+ effect_manager.tot_stat(stat) + modifier_manager.tot_stat(stat)

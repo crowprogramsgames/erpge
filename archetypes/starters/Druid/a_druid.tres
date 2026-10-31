@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Active" format=3 uid="uid://dg158eessrlmw"]
+[gd_resource type="Resource" format=3 uid="uid://bftes84o4gqwr"]
 
-[ext_resource type="Script" uid="uid://b7d6rex4qpujm" path="res://resources/active.gd" id="1_hpnls"]
+[ext_resource type="Script" uid="uid://bwlx8rbmi5kk1" path="res://archetypes/starters/Druid/a_druid.gd" id="1_hpnls"]
 
 [resource]
 script = ExtResource("1_hpnls")
-metadata/_custom_type_script = "uid://b7d6rex4qpujm"
+active_name = "Wood wall"
+active_desc = "All allies are granted the \"protected\" status"

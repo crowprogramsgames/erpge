@@ -9,8 +9,8 @@ func add_effect(e : Effect):
 func delete_effect(e : Effect):
 	man_list.erase(e)
 
-func tot_stat(type : String):
-	var total : int = 0
+func tot_stat(type : String) -> float:
+	var total : float = 0
 	match type:
 		"pwr":
 			for effect in man_list:
@@ -45,6 +45,9 @@ func tot_stat(type : String):
 		"crit_mult":
 			for effect in man_list:
 				total += effect.crit_multiplier()
+		"save":
+			for effect in man_list:
+				total += effect.save_val()
 		_:
 			return 0
 	return total

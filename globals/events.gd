@@ -11,7 +11,6 @@ signal stat_changes
 signal target_selected(target : Character)
 signal end_turn
 signal choose_target
-
 #INFORMATION-BLOCK
 signal call_info(cha : Character)
 signal close_info

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c0wir1vojm65h" path="res://art/adv_sprites/dum_files.png" id="3_egtdl"]
 [ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="4_5nkdd"]
 [ext_resource type="Resource" uid="uid://bikue0lgh7foy" path="res://statuses/neutral.tres" id="5_er2gb"]
+[ext_resource type="Resource" uid="uid://c40gkn1pwomot" path="res://archetypes/pruebas/stats.tres" id="6_egtdl"]
 [ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="6_er2gb"]
 
 [resource]
@@ -12,7 +13,7 @@ script = ExtResource("4_5nkdd")
 arch_name = "Dummy"
 arch_desc = "Very accurate"
 portrait = ExtResource("3_egtdl")
-base_hp = 50
+stats = ExtResource("6_egtdl")
 passive_ability = ExtResource("2_er2gb")
 active_ability = ExtResource("1_3kxlp")
 weapon = ExtResource("6_er2gb")

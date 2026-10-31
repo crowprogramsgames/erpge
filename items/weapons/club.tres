@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://b0slrx608lvjt"]
+
+[ext_resource type="Script" uid="uid://csiqg3bctj7ka" path="res://resources/weapon.gd" id="1_878hj"]
+
+[resource]
+script = ExtResource("1_878hj")
+weapon_name = &"Club"
+weapon_desc = "Thick wooden bat"
+weapon_dmg = 8
+metadata/_custom_type_script = "uid://csiqg3bctj7ka"

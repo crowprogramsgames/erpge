@@ -79,12 +79,10 @@ func _can_be_targeted(target : Character) -> bool:
 	
 	if(selectable):
 		match Action.restriction:
-			Action.Restriction.ALIVE:
-				selectable = !target.status_manager.check_status("dead")
+			Action.Restriction.TARGET:
+				selectable = target.status_manager.status.can_be_targeted
 			Action.Restriction.DEAD:
 				selectable = target.status_manager.check_status("dead")
-			Action.Restriction.BOTH:
-				selectable = true
 			Action.Restriction.ANY:
 				selectable = true
 			Action.Restriction.NONE:
@@ -102,8 +100,16 @@ func _on_end_turn():
 	curr.add_initiative(false)
 	_turn()
 func _on_target_selected(target : Character) -> void:
-	if _can_be_targeted(target):
-		curr.targeted_action(target) #CHANGE TO CHARACTER
+	var targets : Array[Character]
+	if Action.selectable:
+		if _can_be_targeted(target):
+			targets.append(target)
+			curr.targeted_action(targets)
+	else:
+		for adv : Character in adventurers:
+			if _can_be_targeted(adv):
+				targets.append(adv)
+		curr.targeted_action(targets)
 func _on_check_bodies(): #BETA
 	_update_teams()
 	

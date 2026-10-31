@@ -3,7 +3,7 @@ extends Node
 
 enum ActionType {NONE, ATTACK, ABILITY, PROTECT, SKIP}
 enum Targets {NONE, SELF, OALLY, ALLY, ENEMY, OTHER, ALL}
-enum Restriction {NONE, ALIVE, DEAD, BOTH, ANY}
+enum Restriction {NONE, TARGET, DEAD, BOTH, ANY}
 
 static var selectable : bool = false
 static var actiontype : ActionType = ActionType.NONE

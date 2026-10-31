@@ -6,13 +6,14 @@
 [ext_resource type="Script" uid="uid://qoe7jgamtuc7" path="res://resources/archetype.gd" id="3_dqw2d"]
 [ext_resource type="Resource" uid="uid://davpoasx8ri4n" path="res://statuses/hasted.tres" id="4_ekmnv"]
 [ext_resource type="Resource" uid="uid://dy4imxdahwk4w" path="res://items/weapons/longsword.tres" id="6_dqw2d"]
+[ext_resource type="Resource" uid="uid://c40gkn1pwomot" path="res://archetypes/pruebas/stats.tres" id="6_ekmnv"]
 
 [resource]
 script = ExtResource("3_dqw2d")
 arch_name = "Speedy"
 arch_desc = "Very fast"
 portrait = ExtResource("3_25ggk")
-base_hp = 50
+stats = ExtResource("6_ekmnv")
 starting_status = ExtResource("4_ekmnv")
 passive_ability = ExtResource("2_25ggk")
 active_ability = ExtResource("1_wyig8")
